@@ -4,34 +4,42 @@
 // 1. Build yajl with AFL++ instrumentation so the library itself reports
 //    coverage. A plain clang build only instruments the harness.
 //
-//   git clone https://github.com/lloyd/yajl.git
-//   cd yajl
-//   patch -p1 < ../../cmake4.diff
-//   rm -rf build
-//   cmake -S . -B build \
-//     -Wno-dev -Wno-deprecated \
-//     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-//     -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
-//     -DCMAKE_POLICY_DEFAULT_CMP0026=OLD \
-//     -DCMAKE_BUILD_TYPE=Debug \
-//     -DCMAKE_C_COMPILER=afl-clang-fast \
-//     -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -O1 -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls" \
-//     -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined" \
-//     -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined"
-//   cmake --build build
+// git clone https://github.com/lloyd/yajl.git
+// cd yajl
+// patch -p1 < ../../cmake4.diff
+// git commit -m "cmake 4 fixes"
+
+// export AFL_USE_ASAN=1
+// export AFL_USE_UBSAN=1
+// export AFL_FINAL_SYNC=1
+// unset AFL_USE_CFISAN
+// rm -rf build
+// git clean -fdx
+// cmake -S . -B build \
+//   -Wno-deprecated -Wno-author \
+//   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
+//   -DBUILD_SHARED_LIBS=OFF \
+//   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+//   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
+//   -DCMAKE_BUILD_TYPE=Debug \
+//   -DCMAKE_C_COMPILER=afl-clang-fast \
+//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -fPIC -O1 -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld"
+// cmake --build build
 //
 // 2. Build the harness. Source file first, libraries after it, otherwise the
 //    static library's symbols may not resolve.
 //
-//   afl-clang-fast++ -DDEBUG -g -O1 \
-//     -fsanitize=fuzzer,address,undefined \
-//     -fsanitize-address-use-after-scope \
-//     -fsanitize-address-use-after-return=always \
-//     -fno-omit-frame-pointer -fno-optimize-sibling-calls \
-//     -I ~/yajl/yajl-2.1.1/include \
-//     yajl_tree_parse_fuzzer.cpp \
-//     -L ~/yajl/yajl-2.1.1/lib -lyajl_s \
-//     -o fuzzer
+  // afl-clang-fast++ -DDEBUG -g -O1 \
+  //   -fsanitize=fuzzer,address,undefined \
+  //   -fsanitize-address-use-after-scope \
+  //   -fsanitize-address-use-after-return=always \
+  //   -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+  //   -I ./yajl/build/yajl-2.1.1/include \
+  //   yajl_tree_parse_fuzzer.cpp \
+  //   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+  //   -o fuzzer
 //
 // 3. Run.
 //
@@ -56,10 +64,7 @@
 //   log_exe_name=1:\
 //   detect_leaks=1"
 //
-//   # -M and -S take an instance NAME, not a CPU count.
-//   afl-fuzz -M main -x json.dict -x json_surrogates.dict \
-//     -i in-yajl -o out-yajl -- ./fuzzer
-//   # more cores: afl-fuzz -S s1 ... (same -i/-o), one per extra core
+//   afl-fuzz -S main-$HOSTNAME -x json.dict -x json_surrogates.dict -i in-yajl -o out-$(date +%Y-%m-%d-%I-%M-%S) -- ./fuzzer
 // ---------------------------------------------------------------------------
 
 #include <stddef.h>
