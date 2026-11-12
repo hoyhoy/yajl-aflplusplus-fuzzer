@@ -6,7 +6,7 @@
 //
 // git clone https://github.com/lloyd/yajl.git
 // cd yajl
-// patch -p1 < ../../cmake4.diff
+// patch -p1 < ../cmake4.diff
 // git commit -m "cmake 4 fixes"
 
 // export AFL_USE_ASAN=1
