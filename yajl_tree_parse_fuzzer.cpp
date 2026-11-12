@@ -5,7 +5,7 @@
 #include <string>
 
 extern "C" {
-#include <yajl/yajl_tree.h>
+  #include <yajl/yajl_tree.h>
 }
 
 // afl-clang-fast++ -I ~/yajl-2.0.1/include -L ~/yajl-2.0.1/yajl-2.1.0/lib -lyajl_s \
