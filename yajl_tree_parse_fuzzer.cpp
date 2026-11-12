@@ -35,7 +35,7 @@ extern "C" {
 //   -fsanitize-address-use-after-return=always -fno-omit-frame-pointer \\
 /    -fno-optimize-sibling-calls -o fuzzer yajl_fuzzer2.cpp 
 
-// afl-fuzz -M $(sysctl -n hw.ncpu) -x ~/AFLplusplus/dictionaries/json.dict -i in-yajl -o out-yajl2 -- ./fuzzer
+// afl-fuzz -M $(sysctl -n hw.ncpu) -x json.dict -i in-yajl -o out-yajl2 -- ./fuzzer
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   unsigned int val = 0U;
