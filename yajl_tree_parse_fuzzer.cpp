@@ -15,17 +15,6 @@ extern "C" {
 
 // afl-fuzz -M $(sysctl -n hw.ncpu) -x ~/AFLplusplus/dictionaries/json.dict -i in-yajl -o out-yajl2 -- ./fuzzer
 
-static void hexToDigit(unsigned int * val, const unsigned char * hex)
-{
-    unsigned int i;
-    for (i=0;i<4;i++) {
-        unsigned char c = hex[i];          // <-- unconditionally reads 4 bytes
-        if (c >= 'A') c = (c & ~0x20) - 7;
-        c -= '0';
-        *val = (*val << 4) | c;
-    }
-}
-
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   unsigned int val = 0U;
     yajl_val node = NULL;
