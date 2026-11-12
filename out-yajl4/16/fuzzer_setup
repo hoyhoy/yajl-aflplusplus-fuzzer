@@ -1,6 +1,0 @@
-# environment variables:
-AFL_CUSTOM_INFO_PROGRAM=./fuzzer
-AFL_CUSTOM_INFO_PROGRAM_ARGV=
-AFL_CUSTOM_INFO_OUT=out-yajl4/16
-# command line:
-'afl-fuzz' '-M' '16' '-x' 'json.dict' '-x' 'json_surrogates.dict' '-i' 'in-yajl' '-o' 'out-yajl4' '--' './fuzzer'
