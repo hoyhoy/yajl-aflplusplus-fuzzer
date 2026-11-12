@@ -8,8 +8,10 @@ extern "C" {
 #include <yajl/yajl_tree.h>
 }
 
-// afl-clang-fast++  -glldb -fsanitize=fuzzer,address,undefined -fsanitize-address-use-after-scope \
-//   -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -o fuzzer yajl_main.cpp
+// afl-clang-fast++ -I ~/yajl-2.0.1/include -L ~/yajl-2.0.1/yajl-2.1.0/lib -lyajl_s \
+//   -glldb -fsanitize=fuzzer,address,undefined -fsanitize-address-use-after-scope  \\
+//   -fsanitize-address-use-after-return=always -fno-omit-frame-pointer \\
+/    -fno-optimize-sibling-calls -o fuzzer yajl_fuzzer2.cpp 
 
 // afl-fuzz -M $(sysctl -n hw.ncpu) -x ~/AFLplusplus/dictionaries/json.dict -i in-yajl -o out-yajl2 -- ./fuzzer
 
