@@ -17,12 +17,13 @@ extern "C" {
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   unsigned int val = 0U;
-    yajl_val node = NULL;
     char error_buffer[4096] = {0};
 
     std::string s(reinterpret_cast<const char*>(data), size);
 
-    node = yajl_tree_parse(s.data(), error_buffer, sizeof(error_buffer));
+    yajl_val node = yajl_tree_parse(s.data(), error_buffer, sizeof(error_buffer));
+
+    yajl_tree_free(node);
 
     return 0;
 }
