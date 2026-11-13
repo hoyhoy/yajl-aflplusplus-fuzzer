@@ -1,7 +1,7 @@
 out-*
 in-yajl-min*
 yajl
-fuzzer
+fuzzer*
 *.dSYM/*
 .bob
 asan_log
