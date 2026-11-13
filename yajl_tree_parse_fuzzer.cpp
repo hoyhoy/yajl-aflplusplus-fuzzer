@@ -25,27 +25,56 @@
 //   -DCMAKE_BUILD_TYPE=Debug \
 //   -DCMAKE_C_COMPILER=afl-clang-fast \
 //   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
-//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -fPIC -O1 -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld"
+//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
+//      -fsanitize=address,undefined,local-bounds \
+//      -fsanitize-address-use-after-scope \
+//      -fsanitize-address-use-after-return=always \
+//      -fno-omit-frame-pointer \
+//      -fno-optimize-sibling-calls -mtune=native \
+//      -fno-optimize-sibling-calls \
+//      -fasynchronous-unwind-tables \
+//      -funwind-tables -fno-common \
+//      -march=native -fuse-ld=lld" \
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
+
+
 // cmake --build build
-//
+
 // 2. Build the harness. Source file first, libraries after it, otherwise the
 //    static library's symbols may not resolve.
-//
-//   afl-clang-fast++ -DDEBUG -g -O1 \
-//     -fsanitize=fuzzer,address,undefined \
-//     -fsanitize-address-use-after-scope \
-//     -fsanitize-address-use-after-return=always \
-//     -fno-omit-frame-pointer -fno-optimize-sibling-calls \
-//     -I ./yajl/build/yajl-2.1.1/include \
-//     yajl_tree_parse_fuzzer.cpp \
-//     -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
-//     -o fuzzer
 
-// AFL_LLVM_CMPLOG=1 afl-clang-fast++ -I ./yajl/build/yajl-2.1.1/include -L ./yajl/build/yajl-2.1.1/lib\
-//   -glldb -fsanitize=fuzzer,address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always\
-//   -fno-omit-frame-pointer -fno-optimize-sibling-calls -o fuzzer_cmplog yajl_tree_parse_fuzzer.cpp -lyajl_s
+// afl-clang-fast++ -DDEBUG -g -glldb \
+//    -fsanitize=address,undefined,local-bounds \
+//    -fsanitize-address-use-after-scope \
+//    -fsanitize-address-use-after-return=always \
+//    -fno-omit-frame-pointer \
+//    -fno-optimize-sibling-calls -mtune=native \
+//    -fno-optimize-sibling-calls \
+//    -fasynchronous-unwind-tables \
+//    -funwind-tables -fno-common \
+//    -march=native -fuse-ld=lld \
+//    -I ./yajl/build/yajl-2.1.1/include \
+//    yajl_tree_parse_fuzzer.cpp \
+//   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+//   -o fuzzer
+
+//   AFL_LLVM_CMPLOG=1 afl-clang-fast++ \
+//       -DDEBUG -g -glldb \
+//      -fsanitize=address,undefined,local-bounds \
+//      -fsanitize-address-use-after-scope \
+//      -fsanitize-address-use-after-return=always \
+//      -fno-omit-frame-pointer \
+//      -fno-optimize-sibling-calls -mtune=native \
+//      -fno-optimize-sibling-calls \
+//      -fasynchronous-unwind-tables \
+//      -funwind-tables -fno-common \
+//      -march=native -fuse-ld=lld" \
+//      -I ./yajl/build/yajl-2.1.1/include \
+//      yajl_tree_parse_fuzzer.cpp \
+//     -L ./yajl/build/yajl-2.1.1/lib
+//     -o fuzzer_cmplog
+//     -lyajl_s \
 
 // rm -Rf in-yajl-min
 // afl-cmin -T all -i in-yajl -o in-yajl-min -- ./fuzzer --
@@ -92,7 +121,7 @@ extern "C" {
 namespace {
 
 // Inputs larger than this mostly waste time without finding new paths.
-constexpr size_t kMaxInputSize = 1 << 20;
+constexpr size_t kMaxInputSize = 100 << 20;
 
 // Read every string, key, and number in the tree. Parsing alone only proves
 // the parser didn't crash; reading the results lets ASan catch bad lengths,
