@@ -42,6 +42,9 @@
 //     yajl_tree_parse_fuzzer.cpp \
 //     -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
 //     -o fuzzer
+
+// afl-cmin -T all -i in-yajl -o in-yajl-min2 -- ./fuzzer -
+
 //
 // 3. Run.
 //
@@ -66,7 +69,8 @@
 //   log_exe_name=1:\
 //   detect_leaks=1"
 //
-//   afl-fuzz -S main-$HOSTNAME -x json.dict -x json_surrogates.dict -i in-yajl -o out-$(date +%Y-%m-%d-%I-%M-%S) -- ./fuzzer
+//   rm -Rf out-*
+//   afl-fuzz -M main-$HOSTNAME -x json.dict -x json_surrogates.dict -x llvm-fuzzer.dict -x llvm.dict -i in-yajl-min2 -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
 // ---------------------------------------------------------------------------
 
 #include <stddef.h>
