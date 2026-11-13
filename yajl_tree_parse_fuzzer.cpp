@@ -43,6 +43,10 @@
 //     -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
 //     -o fuzzer
 
+// AFL_LLVM_CMPLOG=1 afl-clang-fast++ -I ./yajl/build/yajl-2.1.1/include -L ./yajl/build/yajl-2.1.1/lib\
+//   -glldb -fsanitize=fuzzer,address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always\
+//   -fno-omit-frame-pointer -fno-optimize-sibling-calls -o fuzzer_cmplog yajl_tree_parse_fuzzer.cpp -lyajl_s
+
 // rm -Rf in-yajl-min
 // afl-cmin -T all -i in-yajl -o in-yajl-min -- ./fuzzer --
 
@@ -71,7 +75,8 @@
 //   detect_leaks=1"
 //
 //   rm -Rf out-*
-//   afl-fuzz -M main-$HOSTNAME -x json.dict -x json_surrogates.dict -x llvm-fuzzer.dict -x llvm.dict -i in-yajl-min -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
+//   rm -Rf out-*; afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
+     -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
 // ---------------------------------------------------------------------------
 
 #include <stddef.h>
