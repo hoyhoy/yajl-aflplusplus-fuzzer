@@ -12,6 +12,7 @@
 // export AFL_USE_ASAN=1
 // export AFL_USE_UBSAN=1
 // export AFL_FINAL_SYNC=1
+// export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
 // unset AFL_USE_CFISAN
 // rm -rf build
 // git clean -fdx
@@ -23,6 +24,7 @@
 //   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
 //   -DCMAKE_BUILD_TYPE=Debug \
 //   -DCMAKE_C_COMPILER=afl-clang-fast \
+//   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
 //   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -fPIC -O1 -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -mtune=native -march=native -fuse-ld=lld" \
 //   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld" \
 //   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld"
@@ -31,15 +33,15 @@
 // 2. Build the harness. Source file first, libraries after it, otherwise the
 //    static library's symbols may not resolve.
 //
-  // afl-clang-fast++ -DDEBUG -g -O1 \
-  //   -fsanitize=fuzzer,address,undefined \
-  //   -fsanitize-address-use-after-scope \
-  //   -fsanitize-address-use-after-return=always \
-  //   -fno-omit-frame-pointer -fno-optimize-sibling-calls \
-  //   -I ./yajl/build/yajl-2.1.1/include \
-  //   yajl_tree_parse_fuzzer.cpp \
-  //   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
-  //   -o fuzzer
+//   afl-clang-fast++ -DDEBUG -g -O1 \
+//     -fsanitize=fuzzer,address,undefined \
+//     -fsanitize-address-use-after-scope \
+//     -fsanitize-address-use-after-return=always \
+//     -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+//     -I ./yajl/build/yajl-2.1.1/include \
+//     yajl_tree_parse_fuzzer.cpp \
+//     -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+//     -o fuzzer
 //
 // 3. Run.
 //
