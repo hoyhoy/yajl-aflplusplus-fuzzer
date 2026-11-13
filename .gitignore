@@ -3,3 +3,5 @@ in-yajl-min*
 yajl
 fuzzer
 *.dSYM/*
+.bob
+asan_log
