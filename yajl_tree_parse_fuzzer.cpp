@@ -43,7 +43,8 @@
 //     -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
 //     -o fuzzer
 
-// afl-cmin -T all -i in-yajl -o in-yajl-min2 -- ./fuzzer -
+// rm -Rf in-yajl-min
+// afl-cmin -T all -i in-yajl -o in-yajl-min -- ./fuzzer --
 
 //
 // 3. Run.
@@ -70,7 +71,7 @@
 //   detect_leaks=1"
 //
 //   rm -Rf out-*
-//   afl-fuzz -M main-$HOSTNAME -x json.dict -x json_surrogates.dict -x llvm-fuzzer.dict -x llvm.dict -i in-yajl-min2 -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
+//   afl-fuzz -M main-$HOSTNAME -x json.dict -x json_surrogates.dict -x llvm-fuzzer.dict -x llvm.dict -i in-yajl-min -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
 // ---------------------------------------------------------------------------
 
 #include <stddef.h>
@@ -127,7 +128,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   // NUL are never seen by the parser, so skip those inputs rather than let the
   // fuzzer spend time mutating bytes that are ignored.
   std::string input(reinterpret_cast<const char *>(data), size);
-  if (input.find('\0') != std::string::npos) {
+
+  if (input.empty()) {
     return 0;
   }
 

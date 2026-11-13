@@ -1,0 +1,1 @@
+{"key1":"\uD800\uDC00\uD800\uDC00\uD800\uDC00\uD800\uDC00","key2":"\uD800","key3":"\uDC00","nested":{"deep":{"deeper":{"deepest":"\uD800\uD800\uD800\uDC00\uDC00\uDC00"}}},"array":["\uD800","\uDC00","\uD800\uDC00"]}

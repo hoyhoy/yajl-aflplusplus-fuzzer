@@ -1,0 +1,24 @@
+==ascp==38781==AddressSanitizer: libc interceptors initialized
+|| `[0x200000000000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x140000000000, 0x1fffffffffff]` || HighShadow ||
+|| `[0x120000000000, 0x13ffffffffff]` || ShadowGap  ||
+|| `[0x100000000000, 0x11ffffffffff]` || LowShadow  ||
+|| `[0x000000000000, 0x0fffffffffff]` || LowMem     ||
+MemToShadow(shadow): 0x120000000000 0x123fffffffff 0x128000000000 0x13ffffffffff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x100000000000
+==ascp==38781==Installed the sigaction for signal 11
+==ascp==38781==Installed the sigaction for signal 10
+==ascp==38781==Installed the sigaction for signal 8
+==ascp==38781==T0: FakeStack created: 0x000109e57000 -- 0x00010a960000 stack_size_log: 20; mmapped 11300K, noreserve=0, true_start: 0x000109e53000, start of first frame: 0x000109e60000
+==ascp==38781==T0: stack [0x7ff7bcd6b000,0x7ff7bd56b000) size 0x800000; local=0x7ff7bd563c10
+AddressSanitizer: reading suppressions file at /Users/jperrie/aspera/core/.ubsan-suppressions
+AddressSanitizer: reading suppressions file at /Users/jperrie/aspera/core/.asan-suppressions
+==ascp==38781==AddressSanitizer Init done
+==ascp==38781==LeakSanitizer: checking for leaks

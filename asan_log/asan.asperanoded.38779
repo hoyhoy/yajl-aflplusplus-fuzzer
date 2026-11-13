@@ -1,0 +1,325 @@
+==asperanoded==38779==AddressSanitizer: libc interceptors initialized
+|| `[0x200000000000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x140000000000, 0x1fffffffffff]` || HighShadow ||
+|| `[0x120000000000, 0x13ffffffffff]` || ShadowGap  ||
+|| `[0x100000000000, 0x11ffffffffff]` || LowShadow  ||
+|| `[0x000000000000, 0x0fffffffffff]` || LowMem     ||
+MemToShadow(shadow): 0x120000000000 0x123fffffffff 0x128000000000 0x13ffffffffff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x100000000000
+==asperanoded==38779==Installed the sigaction for signal 11
+==asperanoded==38779==Installed the sigaction for signal 10
+==asperanoded==38779==Installed the sigaction for signal 8
+==asperanoded==38779==T0: FakeStack created: 0x000113957000 -- 0x000114460000 stack_size_log: 20; mmapped 11300K, noreserve=0, true_start: 0x000113955000, start of first frame: 0x000113960000
+==asperanoded==38779==T0: stack [0x7ff7ba983000,0x7ff7bb183000) size 0x800000; local=0x7ff7bb17bc20
+AddressSanitizer: reading suppressions file at /Users/jperrie/aspera/core/.ubsan-suppressions
+AddressSanitizer: reading suppressions file at /Users/jperrie/aspera/core/.asan-suppressions
+==asperanoded==38779==AddressSanitizer Init done
+==asperanoded==38779==T1: FakeStack created: 0x00011521b000 -- 0x0001157a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011520d000, start of first frame: 0x000115220000
+==asperanoded==38779==T1: stack [0x70000b497000,0x70000b517000) size 0x80000; local=0x70000b516f30
+==asperanoded==38779==T2: FakeStack created: 0x00011583b000 -- 0x000115dc0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000115830000, start of first frame: 0x000115840000
+==asperanoded==38779==T2: stack [0x70000b51a000,0x70000b59a000) size 0x80000; local=0x70000b599f30
+==asperanoded==38779==T3: FakeStack created: 0x00011605b000 -- 0x0001165e0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000116051000, start of first frame: 0x000116060000
+==asperanoded==38779==T4: FakeStack created: 0x0001165eb000 -- 0x000116b70000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001165e6000, start of first frame: 0x0001165f0000
+==asperanoded==38779==T4: stack [0x70000b620000,0x70000b6a0000) size 0x80000; local=0x70000b69ff30
+==asperanoded==38779==T3: stack [0x70000b59d000,0x70000b61d000) size 0x80000; local=0x70000b61cf30
+==asperanoded==38779==T5: FakeStack created: 0x000116bfb000 -- 0x000117180000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000116bfb000, start of first frame: 0x000116c00000
+==asperanoded==38779==T5: stack [0x70000b6a3000,0x70000b723000) size 0x80000; local=0x70000b722f30
+==asperanoded==38779==T7: FakeStack created: 0x00011721b000 -- 0x0001177a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000117210000, start of first frame: 0x000117220000
+==asperanoded==38779==T7: stack [0x70000b7a9000,0x70000b829000) size 0x80000; local=0x70000b828f30
+==asperanoded==38779==T6: FakeStack created: 0x0001177ab000 -- 0x000117d30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001177a5000, start of first frame: 0x0001177b0000
+==asperanoded==38779==T6: stack [0x70000b726000,0x70000b7a6000) size 0x80000; local=0x70000b7a5f30
+==asperanoded==38779==T8: FakeStack created: 0x000117e3b000 -- 0x0001183c0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000117e3a000, start of first frame: 0x000117e40000
+==asperanoded==38779==T8: stack [0x70000b82c000,0x70000b8ac000) size 0x80000; local=0x70000b8abf30
+==asperanoded==38779==T9: FakeStack created: 0x00011845b000 -- 0x0001189e0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011844f000, start of first frame: 0x000118460000
+==asperanoded==38779==T9: stack [0x70000b8af000,0x70000b92f000) size 0x80000; local=0x70000b92ef30
+==asperanoded==38779==T10: FakeStack created: 0x0001189eb000 -- 0x000118f70000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001189e4000, start of first frame: 0x0001189f0000
+==asperanoded==38779==T10: stack [0x70000b932000,0x70000b9b2000) size 0x80000; local=0x70000b9b1f30
+==asperanoded==38779==T11: FakeStack created: 0x00011907b000 -- 0x000119600000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000119079000, start of first frame: 0x000119080000
+==asperanoded==38779==T11: stack [0x70000b9b5000,0x70000ba35000) size 0x80000; local=0x70000ba34f30
+==asperanoded==38779==T12: FakeStack created: 0x0001196cb000 -- 0x000119c50000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001196c6000, start of first frame: 0x0001196d0000
+==asperanoded==38779==T14: FakeStack created: 0x000119c5b000 -- 0x00011a1e0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000119c5b000, start of first frame: 0x000119c60000
+==asperanoded==38779==T13: FakeStack created: 0x00011a20b000 -- 0x00011a790000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011a1fe000, start of first frame: 0x00011a210000
+==asperanoded==38779==T15: FakeStack created: 0x00011a79b000 -- 0x00011ad20000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011a793000, start of first frame: 0x00011a7a0000
+==asperanoded==38779==T12: stack [0x70000ba38000,0x70000bab8000) size 0x80000; local=0x70000bab7f30
+==asperanoded==38779==T15: stack [0x70000bbc1000,0x70000bc41000) size 0x80000; local=0x70000bc40f30
+==asperanoded==38779==T14: stack [0x70000bb3e000,0x70000bbbe000) size 0x80000; local=0x70000bbbdf30
+==asperanoded==38779==T13: stack [0x70000babb000,0x70000bb3b000) size 0x80000; local=0x70000bb3af30
+==asperanoded==38779==T17: FakeStack created: 0x00011b3eb000 -- 0x00011b970000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011b3e7000, start of first frame: 0x00011b3f0000
+==asperanoded==38779==T16: FakeStack created: 0x00011ae5b000 -- 0x00011b3e0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011ae52000, start of first frame: 0x00011ae60000
+==asperanoded==38779==T17: stack [0x70000bcc7000,0x70000bd47000) size 0x80000; local=0x70000bd46f30
+==asperanoded==38779==T16: stack [0x70000bc44000,0x70000bcc4000) size 0x80000; local=0x70000bcc3f30
+==asperanoded==38779==T19: FakeStack created: 0x00011c02b000 -- 0x00011c5b0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011c01f000, start of first frame: 0x00011c030000
+==asperanoded==38779==T18: FakeStack created: 0x00011ba8b000 -- 0x00011c010000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011ba8a000, start of first frame: 0x00011ba90000
+==asperanoded==38779==T20: FakeStack created: 0x00011c6cb000 -- 0x00011cc50000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011c6c2000, start of first frame: 0x00011c6d0000
+==asperanoded==38779==T18: stack [0x70000bd4a000,0x70000bdca000) size 0x80000; local=0x70000bdc9f30
+==asperanoded==38779==T20: stack [0x70000be50000,0x70000bed0000) size 0x80000; local=0x70000becff30
+==asperanoded==38779==T19: stack [0x70000bdcd000,0x70000be4d000) size 0x80000; local=0x70000be4cf30
+==asperanoded==38779==T22: FakeStack created: 0x00011cd7b000 -- 0x00011d300000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011cd73000, start of first frame: 0x00011cd80000
+==asperanoded==38779==T21: FakeStack created: 0x00011d30b000 -- 0x00011d890000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011d308000, start of first frame: 0x00011d310000
+==asperanoded==38779==T22: stack [0x70000bf56000,0x70000bfd6000) size 0x80000; local=0x70000bfd5f30
+==asperanoded==38779==T21: stack [0x70000bed3000,0x70000bf53000) size 0x80000; local=0x70000bf52f30
+==asperanoded==38779==T24: FakeStack created: 0x00011dfdb000 -- 0x00011e560000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011dfce000, start of first frame: 0x00011dfe0000
+==asperanoded==38779==T23: FakeStack created: 0x00011da3b000 -- 0x00011dfc0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011da39000, start of first frame: 0x00011da40000
+==asperanoded==38779==T24: stack [0x70000c05c000,0x70000c0dc000) size 0x80000; local=0x70000c0dbf30
+==asperanoded==38779==T23: stack [0x70000bfd9000,0x70000c059000) size 0x80000; local=0x70000c058f30
+==asperanoded==38779==T25: FakeStack created: 0x00011e58b000 -- 0x00011eb10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011e57f000, start of first frame: 0x00011e590000
+==asperanoded==38779==T26: FakeStack created: 0x00011eb2b000 -- 0x00011f0b0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011eb22000, start of first frame: 0x00011eb30000
+==asperanoded==38779==T25: stack [0x70000c0df000,0x70000c15f000) size 0x80000; local=0x70000c15ef30
+==asperanoded==38779==T26: stack [0x70000c162000,0x70000c1e2000) size 0x80000; local=0x70000c1e1f30
+==asperanoded==38779==T27: FakeStack created: 0x00011f1bb000 -- 0x00011f740000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011f1b7000, start of first frame: 0x00011f1c0000
+==asperanoded==38779==T27: stack [0x70000c1e5000,0x70000c265000) size 0x80000; local=0x70000c264f30
+==asperanoded==38779==T28: FakeStack created: 0x00011f8db000 -- 0x00011fe60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011f8da000, start of first frame: 0x00011f8e0000
+==asperanoded==38779==T28: stack [0x70000c268000,0x70000c2e8000) size 0x80000; local=0x70000c2e7f30
+==asperanoded==38779==T29: FakeStack created: 0x00011fe8b000 -- 0x000120410000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00011fe7d000, start of first frame: 0x00011fe90000
+==asperanoded==38779==T29: stack [0x70000c2eb000,0x70000c36b000) size 0x80000; local=0x70000c36af30
+==asperanoded==38779==T30: FakeStack created: 0x00012053b000 -- 0x000120ac0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012052e000, start of first frame: 0x000120540000
+==asperanoded==38779==T30: stack [0x70000c36e000,0x70000c3ee000) size 0x80000; local=0x70000c3edf30
+==asperanoded==38779==T31: FakeStack created: 0x000120adb000 -- 0x000121060000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000120ad1000, start of first frame: 0x000120ae0000
+==asperanoded==38779==T32: FakeStack created: 0x00012106b000 -- 0x0001215f0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000121066000, start of first frame: 0x000121070000
+==asperanoded==38779==T31: stack [0x70000c3f1000,0x70000c471000) size 0x80000; local=0x70000c470f30
+==asperanoded==38779==T33: FakeStack created: 0x00012168b000 -- 0x000121c10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000121689000, start of first frame: 0x000121690000
+==asperanoded==38779==T32: stack [0x70000c474000,0x70000c4f4000) size 0x80000; local=0x70000c4f3f30
+==asperanoded==38779==T33: stack [0x70000c4f7000,0x70000c577000) size 0x80000; local=0x70000c576f30
+==asperanoded==38779==T34: FakeStack created: 0x000121dbb000 -- 0x000122340000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000121dba000, start of first frame: 0x000121dc0000
+==asperanoded==38779==T35: FakeStack created: 0x00012236b000 -- 0x0001228f0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012235d000, start of first frame: 0x000122370000
+==asperanoded==38779==T34: stack [0x70000c57a000,0x70000c5fa000) size 0x80000; local=0x70000c5f9f30
+==asperanoded==38779==T36: FakeStack created: 0x0001228fb000 -- 0x000122e80000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001228f2000, start of first frame: 0x000122900000
+==asperanoded==38779==T35: stack [0x70000c5fd000,0x70000c67d000) size 0x80000; local=0x70000c67cf30
+==asperanoded==38779==T36: stack [0x70000c680000,0x70000c700000) size 0x80000; local=0x70000c6fff30
+==asperanoded==38779==T37: FakeStack created: 0x000122f1b000 -- 0x0001234a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000122f15000, start of first frame: 0x000122f20000
+==asperanoded==38779==T37: stack [0x70000c703000,0x70000c783000) size 0x80000; local=0x70000c782f30
+==asperanoded==38779==T38: FakeStack created: 0x0001235bb000 -- 0x000123b40000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001235b8000, start of first frame: 0x0001235c0000
+==asperanoded==38779==T39: FakeStack created: 0x000123bdb000 -- 0x000124160000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000123bdb000, start of first frame: 0x000123be0000
+==asperanoded==38779==T38: stack [0x70000c786000,0x70000c806000) size 0x80000; local=0x70000c805f30
+==asperanoded==38779==T39: stack [0x70000c809000,0x70000c889000) size 0x80000; local=0x70000c888f30
+==asperanoded==38779==T40: FakeStack created: 0x00012418b000 -- 0x000124710000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012417e000, start of first frame: 0x000124190000
+==asperanoded==38779==T40: stack [0x70000c88c000,0x70000c90c000) size 0x80000; local=0x70000c90bf30
+==asperanoded==38779==T41: FakeStack created: 0x00012482b000 -- 0x000124db0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000124821000, start of first frame: 0x000124830000
+==asperanoded==38779==T41: stack [0x70000c90f000,0x70000c98f000) size 0x80000; local=0x70000c98ef30
+==asperanoded==38779==T42: FakeStack created: 0x000124e4b000 -- 0x0001253d0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000124e44000, start of first frame: 0x000124e50000
+==asperanoded==38779==T42: stack [0x70000c992000,0x70000ca12000) size 0x80000; local=0x70000ca11f30
+==asperanoded==38779==T43: FakeStack created: 0x00012546b000 -- 0x0001259f0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000125467000, start of first frame: 0x000125470000
+==asperanoded==38779==T43: stack [0x70000ca15000,0x70000ca95000) size 0x80000; local=0x70000ca94f30
+==asperanoded==38779==T44: FakeStack created: 0x000125a8b000 -- 0x000126010000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000125a8a000, start of first frame: 0x000125a90000
+==asperanoded==38779==T44: stack [0x70000ca98000,0x70000cb18000) size 0x80000; local=0x70000cb17f30
+==asperanoded==38779==T45: FakeStack created: 0x0001260bb000 -- 0x000126640000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001260ad000, start of first frame: 0x0001260c0000
+==asperanoded==38779==T45: stack [0x70000cb1b000,0x70000cb9b000) size 0x80000; local=0x70000cb9af30
+==asperanoded==38779==T46: FakeStack created: 0x0001266db000 -- 0x000126c60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001266d0000, start of first frame: 0x0001266e0000
+==asperanoded==38779==T46: stack [0x70000cb9e000,0x70000cc1e000) size 0x80000; local=0x70000cc1df30
+==asperanoded==38779==T47: FakeStack created: 0x000126cfb000 -- 0x000127280000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000126cf3000, start of first frame: 0x000126d00000
+==asperanoded==38779==T47: stack [0x70000cc21000,0x70000cca1000) size 0x80000; local=0x70000cca0f30
+==asperanoded==38779==T48: FakeStack created: 0x00012731b000 -- 0x0001278a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000127316000, start of first frame: 0x000127320000
+==asperanoded==38779==T48: stack [0x70000cca4000,0x70000cd24000) size 0x80000; local=0x70000cd23f30
+==asperanoded==38779==T49: FakeStack created: 0x00012793b000 -- 0x000127ec0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000127939000, start of first frame: 0x000127940000
+==asperanoded==38779==T49: stack [0x70000cd27000,0x70000cda7000) size 0x80000; local=0x70000cda6f30
+==asperanoded==38779==T50: FakeStack created: 0x000127f6b000 -- 0x0001284f0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000127f5c000, start of first frame: 0x000127f70000
+==asperanoded==38779==T50: stack [0x70000cdaa000,0x70000ce2a000) size 0x80000; local=0x70000ce29f30
+==asperanoded==38779==T51: FakeStack created: 0x00012858b000 -- 0x000128b10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012857f000, start of first frame: 0x000128590000
+==asperanoded==38779==T51: stack [0x70000ce2d000,0x70000cead000) size 0x80000; local=0x70000ceacf30
+==asperanoded==38779==T52: FakeStack created: 0x000128bab000 -- 0x000129130000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000128ba2000, start of first frame: 0x000128bb0000
+==asperanoded==38779==T52: stack [0x70000ceb0000,0x70000cf30000) size 0x80000; local=0x70000cf2ff30
+==asperanoded==38779==T53: FakeStack created: 0x0001291db000 -- 0x000129760000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001291d3000, start of first frame: 0x0001291e0000
+==asperanoded==38779==T54: FakeStack created: 0x00012976b000 -- 0x000129cf0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000129768000, start of first frame: 0x000129770000
+==asperanoded==38779==T53: stack [0x70000cf33000,0x70000cfb3000) size 0x80000; local=0x70000cfb2f30
+==asperanoded==38779==T55: FakeStack created: 0x000129d8b000 -- 0x00012a310000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000129d8b000, start of first frame: 0x000129d90000
+==asperanoded==38779==T54: stack [0x70000cfb6000,0x70000d036000) size 0x80000; local=0x70000d035f30
+==asperanoded==38779==T56: FakeStack created: 0x00012a3bb000 -- 0x00012a940000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012a3ae000, start of first frame: 0x00012a3c0000
+==asperanoded==38779==T55: stack [0x70000d039000,0x70000d0b9000) size 0x80000; local=0x70000d0b8f30
+==asperanoded==38779==T56: stack [0x70000d0bc000,0x70000d13c000) size 0x80000; local=0x70000d13bf30
+==asperanoded==38779==T57: FakeStack created: 0x00012a9db000 -- 0x00012af60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012a9d1000, start of first frame: 0x00012a9e0000
+==asperanoded==38779==T57: stack [0x70000d13f000,0x70000d1bf000) size 0x80000; local=0x70000d1bef30
+==asperanoded==38779==T58: FakeStack created: 0x00012b07b000 -- 0x00012b600000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012b074000, start of first frame: 0x00012b080000
+==asperanoded==38779==T58: stack [0x70000d1c2000,0x70000d242000) size 0x80000; local=0x70000d241f30
+==asperanoded==38779==T59: FakeStack created: 0x00012b69b000 -- 0x00012bc20000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012b697000, start of first frame: 0x00012b6a0000
+==asperanoded==38779==T59: stack [0x70000d245000,0x70000d2c5000) size 0x80000; local=0x70000d2c4f30
+==asperanoded==38779==T60: FakeStack created: 0x00012bcbb000 -- 0x00012c240000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012bcba000, start of first frame: 0x00012bcc0000
+==asperanoded==38779==T61: FakeStack created: 0x00012c25b000 -- 0x00012c7e0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012c24f000, start of first frame: 0x00012c260000
+==asperanoded==38779==T60: stack [0x70000d2c8000,0x70000d348000) size 0x80000; local=0x70000d347f30
+==asperanoded==38779==T61: stack [0x70000d34b000,0x70000d3cb000) size 0x80000; local=0x70000d3caf30
+==asperanoded==38779==T62: FakeStack created: 0x00012c97b000 -- 0x00012cf00000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012c972000, start of first frame: 0x00012c980000
+==asperanoded==38779==T62: stack [0x70000d3ce000,0x70000d44e000) size 0x80000; local=0x70000d44df30
+==asperanoded==38779==T63: FakeStack created: 0x00012cfab000 -- 0x00012d530000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012cfa3000, start of first frame: 0x00012cfb0000
+==asperanoded==38779==T64: FakeStack created: 0x00012d53b000 -- 0x00012dac0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012d538000, start of first frame: 0x00012d540000
+==asperanoded==38779==T63: stack [0x70000d451000,0x70000d4d1000) size 0x80000; local=0x70000d4d0f30
+==asperanoded==38779==T64: stack [0x70000d4d4000,0x70000d554000) size 0x80000; local=0x70000d553f30
+==asperanoded==38779==T65: FakeStack created: 0x00012dbdb000 -- 0x00012e160000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012dbdb000, start of first frame: 0x00012dbe0000
+==asperanoded==38779==T65: stack [0x70000d557000,0x70000d5d7000) size 0x80000; local=0x70000d5d6f30
+==asperanoded==38779==T67: FakeStack created: 0x00012e23b000 -- 0x00012e7c0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012e236000, start of first frame: 0x00012e240000
+==asperanoded==38779==T69: FakeStack created: 0x00012e7db000 -- 0x00012ed60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012e7d9000, start of first frame: 0x00012e7e0000
+==asperanoded==38779==T67: stack [0x70000d65d000,0x70000d6dd000) size 0x80000; local=0x70000d6dcf30
+==asperanoded==38779==T66: FakeStack created: 0x00012f31b000 -- 0x00012f8a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012f311000, start of first frame: 0x00012f320000
+==asperanoded==38779==T71: FakeStack created: 0x00012fe3b000 -- 0x0001303c0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012fe3b000, start of first frame: 0x00012fe40000
+==asperanoded==38779==T66: stack [0x70000d5da000,0x70000d65a000) size 0x80000; local=0x70000d659f30
+==asperanoded==38779==T72: FakeStack created: 0x0001303eb000 -- 0x000130970000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001303de000, start of first frame: 0x0001303f0000
+==asperanoded==38779==T69: stack [0x70000d763000,0x70000d7e3000) size 0x80000; local=0x70000d7e2f30
+==asperanoded==38779==T71: stack [0x70000d869000,0x70000d8e9000) size 0x80000; local=0x70000d8e8f30
+==asperanoded==38779==T68: FakeStack created: 0x00012f8ab000 -- 0x00012fe30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012f8a6000, start of first frame: 0x00012f8b0000
+==asperanoded==38779==T70: FakeStack created: 0x00012ed7b000 -- 0x00012f300000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00012ed6e000, start of first frame: 0x00012ed80000
+==asperanoded==38779==T74: FakeStack created: 0x0001310ab000 -- 0x000131630000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001310a4000, start of first frame: 0x0001310b0000
+==asperanoded==38779==T72: stack [0x70000d8ec000,0x70000d96c000) size 0x80000; local=0x70000d96bf30
+==asperanoded==38779==T70: stack [0x70000d7e6000,0x70000d866000) size 0x80000; local=0x70000d865f30
+==asperanoded==38779==T73: FakeStack created: 0x000130a0b000 -- 0x000130f90000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000130a01000, start of first frame: 0x000130a10000
+==asperanoded==38779==T75: FakeStack created: 0x00013164b000 -- 0x000131bd0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000131647000, start of first frame: 0x000131650000
+==asperanoded==38779==T74: stack [0x70000d9f2000,0x70000da72000) size 0x80000; local=0x70000da71f30
+==asperanoded==38779==T68: stack [0x70000d6e0000,0x70000d760000) size 0x80000; local=0x70000d75ff30
+==asperanoded==38779==T73: stack [0x70000d96f000,0x70000d9ef000) size 0x80000; local=0x70000d9eef30
+==asperanoded==38779==T76: FakeStack created: 0x000131c6b000 -- 0x0001321f0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000131c6a000, start of first frame: 0x000131c70000
+==asperanoded==38779==T75: stack [0x70000da75000,0x70000daf5000) size 0x80000; local=0x70000daf4f30
+==asperanoded==38779==T76: stack [0x70000daf8000,0x70000db78000) size 0x80000; local=0x70000db77f30
+==asperanoded==38779==T77: FakeStack created: 0x00013231b000 -- 0x0001328a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013230d000, start of first frame: 0x000132320000
+==asperanoded==38779==T78: FakeStack created: 0x00013293b000 -- 0x000132ec0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000132930000, start of first frame: 0x000132940000
+==asperanoded==38779==T77: stack [0x70000db7b000,0x70000dbfb000) size 0x80000; local=0x70000dbfaf30
+==asperanoded==38779==T79: FakeStack created: 0x000132fdb000 -- 0x000133560000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000132fd3000, start of first frame: 0x000132fe0000
+==asperanoded==38779==T78: stack [0x70000dbfe000,0x70000dc7e000) size 0x80000; local=0x70000dc7df30
+==asperanoded==38779==T79: stack [0x70000dc81000,0x70000dd01000) size 0x80000; local=0x70000dd00f30
+==asperanoded==38779==T80: FakeStack created: 0x0001336fb000 -- 0x000133c80000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001336f6000, start of first frame: 0x000133700000
+==asperanoded==38779==T80: stack [0x70000dd04000,0x70000dd84000) size 0x80000; local=0x70000dd83f30
+==asperanoded==38779==T81: FakeStack created: 0x000133d9b000 -- 0x000134320000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000133d99000, start of first frame: 0x000133da0000
+==asperanoded==38779==T81: stack [0x70000dd87000,0x70000de07000) size 0x80000; local=0x70000de06f30
+==asperanoded==38779==T82: FakeStack created: 0x0001343cb000 -- 0x000134950000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001343ca000, start of first frame: 0x0001343d0000
+==asperanoded==38779==T83: FakeStack created: 0x0001349fb000 -- 0x000134f80000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001349ed000, start of first frame: 0x000134a00000
+==asperanoded==38779==T82: stack [0x70000de0a000,0x70000de8a000) size 0x80000; local=0x70000de89f30
+==asperanoded==38779==T83: stack [0x70000de8d000,0x70000df0d000) size 0x80000; local=0x70000df0cf30
+==asperanoded==38779==T84: FakeStack created: 0x00013500b000 -- 0x000135590000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000135002000, start of first frame: 0x000135010000
+==asperanoded==38779==T84: stack [0x70000df10000,0x70000df90000) size 0x80000; local=0x70000df8ff30
+==asperanoded==38779==T85: FakeStack created: 0x00013561b000 -- 0x000135ba0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000135617000, start of first frame: 0x000135620000
+==asperanoded==38779==T85: stack [0x70000df93000,0x70000e013000) size 0x80000; local=0x70000e012f30
+==asperanoded==38779==T86: FakeStack created: 0x000135cbb000 -- 0x000136240000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000135cba000, start of first frame: 0x000135cc0000
+==asperanoded==38779==T86: stack [0x70000e016000,0x70000e096000) size 0x80000; local=0x70000e095f30
+==asperanoded==38779==T88: FakeStack created: 0x0001368ab000 -- 0x000136e30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001368aa000, start of first frame: 0x0001368b0000
+==asperanoded==38779==T89: FakeStack created: 0x000136e4b000 -- 0x0001373d0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000136e3f000, start of first frame: 0x000136e50000
+==asperanoded==38779==T88: stack [0x70000e11c000,0x70000e19c000) size 0x80000; local=0x70000e19bf30
+==asperanoded==38779==T90: FakeStack created: 0x0001373eb000 -- 0x000137970000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001373e2000, start of first frame: 0x0001373f0000
+==asperanoded==38779==T91: FakeStack created: 0x00013798b000 -- 0x000137f10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000137985000, start of first frame: 0x000137990000
+==asperanoded==38779==T87: FakeStack created: 0x00013631b000 -- 0x0001368a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000136315000, start of first frame: 0x000136320000
+==asperanoded==38779==T92: FakeStack created: 0x000137f1b000 -- 0x0001384a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000137f1a000, start of first frame: 0x000137f20000
+==asperanoded==38779==T89: stack [0x70000e19f000,0x70000e21f000) size 0x80000; local=0x70000e21ef30
+==asperanoded==38779==T93: FakeStack created: 0x00013854b000 -- 0x000138ad0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013854b000, start of first frame: 0x000138550000
+==asperanoded==38779==T91: stack [0x70000e2a5000,0x70000e325000) size 0x80000; local=0x70000e324f30
+==asperanoded==38779==T94: FakeStack created: 0x000138aeb000 -- 0x000139070000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000138ae0000, start of first frame: 0x000138af0000
+==asperanoded==38779==T92: stack [0x70000e328000,0x70000e3a8000) size 0x80000; local=0x70000e3a7f30
+==asperanoded==38779==T87: stack [0x70000e099000,0x70000e119000) size 0x80000; local=0x70000e118f30
+==asperanoded==38779==T94: stack [0x70000e42e000,0x70000e4ae000) size 0x80000; local=0x70000e4adf30
+==asperanoded==38779==T90: stack [0x70000e222000,0x70000e2a2000) size 0x80000; local=0x70000e2a1f30
+==asperanoded==38779==T95: FakeStack created: 0x00013910b000 -- 0x000139690000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000139103000, start of first frame: 0x000139110000
+==asperanoded==38779==T93: stack [0x70000e3ab000,0x70000e42b000) size 0x80000; local=0x70000e42af30
+==asperanoded==38779==T96: FakeStack created: 0x00013972b000 -- 0x000139cb0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000139726000, start of first frame: 0x000139730000
+==asperanoded==38779==T95: stack [0x70000e4b1000,0x70000e531000) size 0x80000; local=0x70000e530f30
+==asperanoded==38779==T97: FakeStack created: 0x000139ecb000 -- 0x00013a450000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000139ec9000, start of first frame: 0x000139ed0000
+==asperanoded==38779==T96: stack [0x70000e534000,0x70000e5b4000) size 0x80000; local=0x70000e5b3f30
+==asperanoded==38779==T97: stack [0x70000e5b7000,0x70000e637000) size 0x80000; local=0x70000e636f30
+==asperanoded==38779==T98: FakeStack created: 0x00013a4fb000 -- 0x00013aa80000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013a4ec000, start of first frame: 0x00013a500000
+==asperanoded==38779==T99: FakeStack created: 0x00013ab9b000 -- 0x00013b120000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013ab8f000, start of first frame: 0x00013aba0000
+==asperanoded==38779==T98: stack [0x70000e63a000,0x70000e6ba000) size 0x80000; local=0x70000e6b9f30
+==asperanoded==38779==T99: stack [0x70000e6bd000,0x70000e73d000) size 0x80000; local=0x70000e73cf30
+==asperanoded==38779==T100: FakeStack created: 0x00013b2bb000 -- 0x00013b840000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013b2b2000, start of first frame: 0x00013b2c0000
+==asperanoded==38779==T100: stack [0x70000e740000,0x70000e7c0000) size 0x80000; local=0x70000e7bff30
+==asperanoded==38779==T101: FakeStack created: 0x00013b8eb000 -- 0x00013be70000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013b8e3000, start of first frame: 0x00013b8f0000
+==asperanoded==38779==T101: stack [0x70000e7c3000,0x70000e843000) size 0x80000; local=0x70000e842f30
+==asperanoded==38779==T102: FakeStack created: 0x00013be7b000 -- 0x00013c400000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013be78000, start of first frame: 0x00013be80000
+==asperanoded==38779==T102: stack [0x70000e846000,0x70000e8c6000) size 0x80000; local=0x70000e8c5f30
+==asperanoded==38779==T104: FakeStack created: 0x00013c53b000 -- 0x00013cac0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013c537000, start of first frame: 0x00013c540000
+==asperanoded==38779==T103: FakeStack created: 0x00013cadb000 -- 0x00013d060000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013cada000, start of first frame: 0x00013cae0000
+==asperanoded==38779==T104: stack [0x70000e94c000,0x70000e9cc000) size 0x80000; local=0x70000e9cbf30
+==asperanoded==38779==T105: FakeStack created: 0x00013d08b000 -- 0x00013d610000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013d07d000, start of first frame: 0x00013d090000
+==asperanoded==38779==T103: stack [0x70000e8c9000,0x70000e949000) size 0x80000; local=0x70000e948f30
+==asperanoded==38779==T105: stack [0x70000e9cf000,0x70000ea4f000) size 0x80000; local=0x70000ea4ef30
+==asperanoded==38779==T107: FakeStack created: 0x00013dc3b000 -- 0x00013e1c0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013dc35000, start of first frame: 0x00013dc40000
+==asperanoded==38779==T108: FakeStack created: 0x00013e2cb000 -- 0x00013e850000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013e2ca000, start of first frame: 0x00013e2d0000
+==asperanoded==38779==T106: FakeStack created: 0x00013d6ab000 -- 0x00013dc30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013d6a0000, start of first frame: 0x00013d6b0000
+==asperanoded==38779==T107: stack [0x70000ead5000,0x70000eb55000) size 0x80000; local=0x70000eb54f30
+==asperanoded==38779==T109: FakeStack created: 0x00013e87b000 -- 0x00013ee00000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013e86d000, start of first frame: 0x00013e880000
+==asperanoded==38779==T106: stack [0x70000ea52000,0x70000ead2000) size 0x80000; local=0x70000ead1f30
+==asperanoded==38779==T110: FakeStack created: 0x00013ee1b000 -- 0x00013f3a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013ee10000, start of first frame: 0x00013ee20000
+==asperanoded==38779==T108: stack [0x70000eb58000,0x70000ebd8000) size 0x80000; local=0x70000ebd7f30
+==asperanoded==38779==T112: FakeStack created: 0x00013f9db000 -- 0x00013ff60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013f9d6000, start of first frame: 0x00013f9e0000
+==asperanoded==38779==T110: stack [0x70000ec5e000,0x70000ecde000) size 0x80000; local=0x70000ecddf30
+==asperanoded==38779==T111: FakeStack created: 0x00013f43b000 -- 0x00013f9c0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013f433000, start of first frame: 0x00013f440000
+==asperanoded==38779==T109: stack [0x70000ebdb000,0x70000ec5b000) size 0x80000; local=0x70000ec5af30
+==asperanoded==38779==T113: FakeStack created: 0x00013ff7b000 -- 0x000140500000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00013ff79000, start of first frame: 0x00013ff80000
+==asperanoded==38779==T111: stack [0x70000ece1000,0x70000ed61000) size 0x80000; local=0x70000ed60f30
+==asperanoded==38779==T112: stack [0x70000ed64000,0x70000ede4000) size 0x80000; local=0x70000ede3f30
+==asperanoded==38779==T114: FakeStack created: 0x0001405ab000 -- 0x000140b30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014059c000, start of first frame: 0x0001405b0000
+==asperanoded==38779==T115: FakeStack created: 0x000140bcb000 -- 0x000141150000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000140bbf000, start of first frame: 0x000140bd0000
+==asperanoded==38779==T113: stack [0x70000ede7000,0x70000ee67000) size 0x80000; local=0x70000ee66f30
+==asperanoded==38779==T114: stack [0x70000ee6a000,0x70000eeea000) size 0x80000; local=0x70000eee9f30
+==asperanoded==38779==T116: FakeStack created: 0x0001411eb000 -- 0x000141770000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001411e2000, start of first frame: 0x0001411f0000
+==asperanoded==38779==T116: stack [0x70000ef70000,0x70000eff0000) size 0x80000; local=0x70000efeff30
+==asperanoded==38779==T117: FakeStack created: 0x00014180b000 -- 0x000141d90000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000141805000, start of first frame: 0x000141810000
+==asperanoded==38779==T115: stack [0x70000eeed000,0x70000ef6d000) size 0x80000; local=0x70000ef6cf30
+==asperanoded==38779==T118: FakeStack created: 0x000141e2b000 -- 0x0001423b0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000141e28000, start of first frame: 0x000141e30000
+==asperanoded==38779==T119: FakeStack created: 0x0001424cb000 -- 0x000142a50000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001424cb000, start of first frame: 0x0001424d0000
+==asperanoded==38779==T117: stack [0x70000eff3000,0x70000f073000) size 0x80000; local=0x70000f072f30
+==asperanoded==38779==T120: FakeStack created: 0x000142a7b000 -- 0x000143000000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000142a6e000, start of first frame: 0x000142a80000
+==asperanoded==38779==T121: FakeStack created: 0x00014311b000 -- 0x0001436a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000143111000, start of first frame: 0x000143120000
+==asperanoded==38779==T120: stack [0x70000f17c000,0x70000f1fc000) size 0x80000; local=0x70000f1fbf30
+==asperanoded==38779==T122: FakeStack created: 0x0001437bb000 -- 0x000143d40000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001437b4000, start of first frame: 0x0001437c0000
+==asperanoded==38779==T121: stack [0x70000f1ff000,0x70000f27f000) size 0x80000; local=0x70000f27ef30
+==asperanoded==38779==T118: stack [0x70000f076000,0x70000f0f6000) size 0x80000; local=0x70000f0f5f30
+==asperanoded==38779==T123: FakeStack created: 0x000143ddb000 -- 0x000144360000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000143dd7000, start of first frame: 0x000143de0000
+==asperanoded==38779==T124: FakeStack created: 0x0001443fb000 -- 0x000144980000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001443fa000, start of first frame: 0x000144400000
+==asperanoded==38779==T122: stack [0x70000f282000,0x70000f302000) size 0x80000; local=0x70000f301f30
+==asperanoded==38779==T125: FakeStack created: 0x0001449ab000 -- 0x000144f30000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014499d000, start of first frame: 0x0001449b0000
+==asperanoded==38779==T119: stack [0x70000f0f9000,0x70000f179000) size 0x80000; local=0x70000f178f30
+==asperanoded==38779==T126: FakeStack created: 0x000144fcb000 -- 0x000145550000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000144fc0000, start of first frame: 0x000144fd0000
+==asperanoded==38779==T127: FakeStack created: 0x0001455eb000 -- 0x000145b70000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001455e3000, start of first frame: 0x0001455f0000
+==asperanoded==38779==T126: stack [0x70000f48e000,0x70000f50e000) size 0x80000; local=0x70000f50df30
+==asperanoded==38779==T128: FakeStack created: 0x000145c0b000 -- 0x000146190000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000145c06000, start of first frame: 0x000145c10000
+==asperanoded==38779==T123: stack [0x70000f305000,0x70000f385000) size 0x80000; local=0x70000f384f30
+==asperanoded==38779==T125: stack [0x70000f40b000,0x70000f48b000) size 0x80000; local=0x70000f48af30
+==asperanoded==38779==T129: FakeStack created: 0x0001461ab000 -- 0x000146730000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001461a9000, start of first frame: 0x0001461b0000
+==asperanoded==38779==T124: stack [0x70000f388000,0x70000f408000) size 0x80000; local=0x70000f407f30
+==asperanoded==38779==T130: FakeStack created: 0x00014675b000 -- 0x000146ce0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014674c000, start of first frame: 0x000146760000
+==asperanoded==38779==T131: FakeStack created: 0x000146dfb000 -- 0x000147380000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000146def000, start of first frame: 0x000146e00000
+==asperanoded==38779==T131: stack [0x70000f71d000,0x70000f79d000) size 0x80000; local=0x70000f79cf30
+==asperanoded==38779==T132: FakeStack created: 0x00014741b000 -- 0x0001479a0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000147412000, start of first frame: 0x000147420000
+==asperanoded==38779==T129: stack [0x70000f617000,0x70000f697000) size 0x80000; local=0x70000f696f30
+==asperanoded==38779==T133: FakeStack created: 0x0001479bb000 -- 0x000147f40000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001479b5000, start of first frame: 0x0001479c0000
+==asperanoded==38779==T132: stack [0x70000f7a0000,0x70000f820000) size 0x80000; local=0x70000f81ff30
+==asperanoded==38779==T134: FakeStack created: 0x000147fcb000 -- 0x000148550000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000147fca000, start of first frame: 0x000147fd0000
+==asperanoded==38779==T128: stack [0x70000f594000,0x70000f614000) size 0x80000; local=0x70000f613f30
+==asperanoded==38779==T130: stack [0x70000f69a000,0x70000f71a000) size 0x80000; local=0x70000f719f30
+==asperanoded==38779==T134: stack [0x70000f8a6000,0x70000f926000) size 0x80000; local=0x70000f925f30
+==asperanoded==38779==T133: stack [0x70000f823000,0x70000f8a3000) size 0x80000; local=0x70000f8a2f30
+==asperanoded==38779==T127: stack [0x70000f511000,0x70000f591000) size 0x80000; local=0x70000f590f30
+==asperanoded==38779==T135: FakeStack created: 0x00014898b000 -- 0x000148f10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000148989000, start of first frame: 0x000148990000
+==asperanoded==38779==T136: FakeStack created: 0x000148f2b000 -- 0x0001494b0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000148f1e000, start of first frame: 0x000148f30000
+==asperanoded==38779==T137: FakeStack created: 0x0001494bb000 -- 0x000149a40000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x0001494b3000, start of first frame: 0x0001494c0000
+==asperanoded==38779==T136: stack [0x70000f9ac000,0x70000fa2c000) size 0x80000; local=0x70000fa2bf30
+==asperanoded==38779==T135: stack [0x70000f929000,0x70000f9a9000) size 0x80000; local=0x70000f9a8f30
+==asperanoded==38779==T137: stack [0x70000fa2f000,0x70000faaf000) size 0x80000; local=0x70000faaef30
+==asperanoded==38779==T139: FakeStack created: 0x000149bfb000 -- 0x00014a180000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x000149bf2000, start of first frame: 0x000149c00000
+==asperanoded==38779==T140: FakeStack created: 0x00014a19b000 -- 0x00014a720000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014a195000, start of first frame: 0x00014a1a0000
+==asperanoded==38779==T139: stack [0x70000fb35000,0x70000fbb5000) size 0x80000; local=0x70000fbb4f30
+==asperanoded==38779==T138: FakeStack created: 0x00014a72b000 -- 0x00014acb0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014a72a000, start of first frame: 0x00014a730000
+==asperanoded==38779==T141: FakeStack created: 0x00014acdb000 -- 0x00014b260000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014accd000, start of first frame: 0x00014ace0000
+==asperanoded==38779==T140: stack [0x70000fbb8000,0x70000fc38000) size 0x80000; local=0x70000fc37f30
+==asperanoded==38779==T141: stack [0x70000fc3b000,0x70000fcbb000) size 0x80000; local=0x70000fcbaf30
+==asperanoded==38779==T142: FakeStack created: 0x00014b2fb000 -- 0x00014b880000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014b2f0000, start of first frame: 0x00014b300000
+==asperanoded==38779==T138: stack [0x70000fab2000,0x70000fb32000) size 0x80000; local=0x70000fb31f30
+==asperanoded==38779==T143: FakeStack created: 0x00014b91b000 -- 0x00014bea0000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014b913000, start of first frame: 0x00014b920000
+==asperanoded==38779==T142: stack [0x70000fcbe000,0x70000fd3e000) size 0x80000; local=0x70000fd3df30
+==asperanoded==38779==T144: FakeStack created: 0x00014bebb000 -- 0x00014c440000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014beb6000, start of first frame: 0x00014bec0000
+==asperanoded==38779==T144: stack [0x70000fdc4000,0x70000fe44000) size 0x80000; local=0x70000fe43f30
+==asperanoded==38779==T145: FakeStack created: 0x00014c5db000 -- 0x00014cb60000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014c5d9000, start of first frame: 0x00014c5e0000
+==asperanoded==38779==T146: FakeStack created: 0x00014cb7b000 -- 0x00014d100000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014cb6e000, start of first frame: 0x00014cb80000
+==asperanoded==38779==T145: stack [0x70000fe47000,0x70000fec7000) size 0x80000; local=0x70000fec6f30
+==asperanoded==38779==T143: stack [0x70000fd41000,0x70000fdc1000) size 0x80000; local=0x70000fdc0f30
+==asperanoded==38779==T147: FakeStack created: 0x00014d19b000 -- 0x00014d720000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014d191000, start of first frame: 0x00014d1a0000
+==asperanoded==38779==T146: stack [0x70000feca000,0x70000ff4a000) size 0x80000; local=0x70000ff49f30
+==asperanoded==38779==T147: stack [0x70000ff4d000,0x70000ffcd000) size 0x80000; local=0x70000ffccf30
+==asperanoded==38779==T148: FakeStack created: 0x00014d7cb000 -- 0x00014dd50000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014d7c2000, start of first frame: 0x00014d7d0000
+==asperanoded==38779==T148: stack [0x70000ffd0000,0x700010050000) size 0x80000; local=0x70001004ff30
+==asperanoded==38779==T149: FakeStack created: 0x00014ddeb000 -- 0x00014e370000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014dde5000, start of first frame: 0x00014ddf0000
+==asperanoded==38779==T149: stack [0x700010053000,0x7000100d3000) size 0x80000; local=0x7000100d2f30
+==asperanoded==38779==T150: FakeStack created: 0x00014e48b000 -- 0x00014ea10000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014e488000, start of first frame: 0x00014e490000
+==asperanoded==38779==T151: FakeStack created: 0x00014eaab000 -- 0x00014f030000 stack_size_log: 19; mmapped 5652K, noreserve=0, true_start: 0x00014ea9d000, start of first frame: 0x00014eab0000
+==asperanoded==38779==T151: stack [0x700010159000,0x7000101d9000) size 0x80000; local=0x7000101d8f30
+==asperanoded==38779==T150: stack [0x7000100d6000,0x700010156000) size 0x80000; local=0x700010155f30

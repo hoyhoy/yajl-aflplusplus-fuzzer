@@ -1,0 +1,22 @@
+==afl-fuzz==53051==AddressSanitizer: libc interceptors initialized
+|| `[0x200000000000, 0x7fffffffffff]` || HighMem    ||
+|| `[0x140000000000, 0x1fffffffffff]` || HighShadow ||
+|| `[0x120000000000, 0x13ffffffffff]` || ShadowGap  ||
+|| `[0x100000000000, 0x11ffffffffff]` || LowShadow  ||
+|| `[0x000000000000, 0x0fffffffffff]` || LowMem     ||
+MemToShadow(shadow): 0x120000000000 0x123fffffffff 0x128000000000 0x13ffffffffff
+redzone=16
+max_redzone=2048
+quarantine_size_mb=256M
+thread_local_quarantine_size_kb=1024K
+malloc_context_size=30
+SHADOW_SCALE: 3
+SHADOW_GRANULARITY: 8
+SHADOW_OFFSET: 0x100000000000
+==afl-fuzz==53051==Installed the sigaction for signal 11
+==afl-fuzz==53051==Installed the sigaction for signal 10
+==afl-fuzz==53051==Installed the sigaction for signal 8
+==afl-fuzz==53051==T0: FakeStack created: 0x00010a727000 -- 0x00010b230000 stack_size_log: 20; mmapped 11300K, noreserve=0, true_start: 0x00010a719000, start of first frame: 0x00010a730000
+==afl-fuzz==53051==T0: stack [0x7ff7b6c4e000,0x7ff7b744e000) size 0x800000; local=0x7ff7b7447430
+==afl-fuzz==53051==AddressSanitizer Init done
+==afl-fuzz==53051==LeakSanitizer: checking for leaks
