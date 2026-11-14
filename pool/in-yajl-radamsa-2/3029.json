@@ -1,0 +1,3 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"key":"\\uD800\\uD801\\uDFFF\\uDFFF"}

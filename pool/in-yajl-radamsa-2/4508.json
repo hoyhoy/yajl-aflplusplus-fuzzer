@@ -1,0 +1,4 @@
+{
+	"boolean, true": true,
+	"boolean, false": false,
+	"/test","data":"\\n\\r\\t\\b\\f\\/\\\"\\\\\\u0\\uXXXX\\u"}

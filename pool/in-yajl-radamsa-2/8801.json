@@ -1,0 +1,6 @@
+["foo",
+ "bar", "ba$PATH'xcalc\2147483649&#1;+inf\x1'xcalc\x0d%d\x1d\n\u0000$1\u0000$!!\n%n\n%s",
+ true,false,null,{"key":󠁩"value"},
+ [null,null,null,[]],
+ "\%n\n'xcalc!xcalc$'!xcalc%n\nNaN%d\x00$+$'\r\n\r$+"
+]

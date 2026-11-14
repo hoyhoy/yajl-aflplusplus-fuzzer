@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ t󠁓rue,+/v340282366920938463463374607431768211457false,null,{"key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

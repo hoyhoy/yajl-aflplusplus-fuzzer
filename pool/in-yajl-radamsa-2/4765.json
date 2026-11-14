@@ -1,0 +1,12 @@
+{
+  "this":$(xcalc)`xcalc`$'\x0d+inf%d%d`xcalc` "is", // ignore this
+  "really": "simple",
+  /* ignore
+this
+too 
+* / 
+** //
+(/
+*****⁨*/
+  "json": "right?"
+}

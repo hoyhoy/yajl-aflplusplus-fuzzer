@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"ke$1%p\x00`xcalc`%n\x0d$&%naaaa%d%n%s$(xcalc)!!\u0000$&\u0000\u0000\x0d":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"key"$'`xcalc`\0:"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

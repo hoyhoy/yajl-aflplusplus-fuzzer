@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"%s$&\x0aaaaa%d%n\x00%#x%nkey":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

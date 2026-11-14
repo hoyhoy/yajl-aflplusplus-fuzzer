@@ -1,4 +1,4 @@
-out-*
+out*
 in-yajl-min*
 yajl
 fuzzer*

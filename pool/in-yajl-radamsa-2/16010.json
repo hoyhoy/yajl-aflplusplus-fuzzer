@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"kNaN%s\r$1&#000;"xcalc\x1\n$!!+inf"xcalcey":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

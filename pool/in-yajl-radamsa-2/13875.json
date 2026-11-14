@@ -1,0 +1,11 @@
+{
+  "this":!!$!!!xcalc'xcalc%n "is", // ignore this
+  "really¿¢: "simple",
+  /* ignore
+this
+too * / 
+** //
+(/
+******/
+  "json": "right?"
+}

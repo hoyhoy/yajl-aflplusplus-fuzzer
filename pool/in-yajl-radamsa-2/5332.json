@@ -1,0 +1,5 @@
+["foo",
+ "bar", "bazà¹€",
+ true,false,null,{À¢key":"value"},
+ [null,null,nulâ€Ž"
+]

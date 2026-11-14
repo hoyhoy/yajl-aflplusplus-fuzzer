@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"key":"value"},
+ [nullÀ¬null,null,[]],
+ "\nó €±\r\\"
+]

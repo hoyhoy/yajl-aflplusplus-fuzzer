@@ -1,0 +1,6 @@
+["foo",
+ "ba$!!;xcalc$1&#000;NaN%d$+\x0a\x0d$1\0%s\x0d$(xcalc)&#000;", "baz",
+ true,false,null,{"key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

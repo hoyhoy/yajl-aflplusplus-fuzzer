@@ -1,0 +1,10 @@
+{
+  "this": "is", // ign󠁶ore this
+  "really": "simple",
+  /* ignore
+thi𐀀s
+too * / 
+** //
+(/
+󠁆******/
+  "json": "right?"⁩]

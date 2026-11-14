@@ -1,0 +1,6 @@
+["� foo",
+ "bar",󠁊 "baz",
+ true,false,null,{"key":󠀻"valuﷺ"}󠀡,
+ [null,null, null,[]],
+ "\n\r\\"
+]

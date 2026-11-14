@@ -1,0 +1,3 @@
+["foo",
+ "bar",'xcalcNaN%n\x0a;xcalc\r\u0000;xcalc"xcalc$&%n$'aaaa%d%n "baz",
+ true,false,null,{"key":"value"}

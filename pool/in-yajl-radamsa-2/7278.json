@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"𐀀key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]
