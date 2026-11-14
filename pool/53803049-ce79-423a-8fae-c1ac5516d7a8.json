@@ -1,3 +1,0 @@
-["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
- "\"and this string has an escape at the beginning",
- "and this string has no escap	es" $&\x1%n\r$!!$'%#xaaaa%d%n\x18446744073709551617a\x0a!xcalcaaaa%d%n\x0a%d$0"xcalc

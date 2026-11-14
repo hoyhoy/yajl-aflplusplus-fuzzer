@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,Â·false,null,{"key":"value"},
- [null,null,null,[]],
- "\n\r\\ïó €®â€©¿¿"
-]

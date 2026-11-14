@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"key":"value"},
- [null,null,null,[]],
- "\n%n\u0000aaaa%d%n%n\0$!!`xcalc`aaaa%d%n!xcalc$PATH\x0d\x0a\x00;xcalc%p\r\\"
-]

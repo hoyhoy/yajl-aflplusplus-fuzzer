@@ -1,3 +1,0 @@
-$+`xcalc`%d\naaaa%d%n$(xcalc)+inf\x00["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
- "\"and this string haแs an escape at the beginning",
- "and this string h‭as no escapes" ]

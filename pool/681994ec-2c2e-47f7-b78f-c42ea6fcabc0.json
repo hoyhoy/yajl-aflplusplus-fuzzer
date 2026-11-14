@@ -1,5 +1,0 @@
-["foo",%d$(xcalc)%s$1$&\x00NaN\0\x0d"bar", "baz",
- true,false,null,{"key":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

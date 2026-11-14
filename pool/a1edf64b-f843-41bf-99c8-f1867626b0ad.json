@@ -1,6 +1,0 @@
-["foo",
- "bar"\0, "baz",
- true,false,null,{"keaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

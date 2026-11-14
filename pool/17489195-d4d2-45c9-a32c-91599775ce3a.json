@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"key"$1\u0000$`\0%#x\x00%n$(xcalc)$(xcalc)!xcalc&#000;$!!"xcalc:"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

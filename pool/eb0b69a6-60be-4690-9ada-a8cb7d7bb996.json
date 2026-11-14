@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"ke\x00'xcalc!xcalc%n%p%n!!\n$1%pNaNy":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

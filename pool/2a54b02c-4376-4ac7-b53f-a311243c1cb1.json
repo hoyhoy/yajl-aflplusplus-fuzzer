@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"key":"value¿¢},
- [null,nullÛ†Å®,null,[]$&%#x"xcalc`xcalc`NaN!xcalc\x1a$PATHNaN\r\n%d$'+inf$1\x0d¿¨
- "\n\r\\"
-]

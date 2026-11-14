@@ -1,6 +1,0 @@
-["foo",
-$'aaaa%d%n%s%n\0\n&#000;\x0d$1`xcalc`%#x%#x%d%#x\x0d\x0d%s\0%n"bar", "baz",
- true,false,null,{"key":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"key":"value"},
- [null,null,null,[]],
- "\n\r;xcalc$&\x-18782a`xcalc`$PATH`xcalc`NaN$PATH$!!$'\x1$PATH"
-]
