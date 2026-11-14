@@ -18,8 +18,9 @@ for i in $(seq 1 $((N-1))); do
   envs+=(AFL_FINAL_SYNC=1)
   envs+=(AFL_USE_LSAN=1)
   envs+=(AFL_USE_ASAN=1)
+  envs+=(AFL_AUTORESUME=1)
 
-  args=(-S "s$i" -t 1000+ -i pool-min -o out)
+  args=(-S "s$i" -t 1000+ -x  -x  -i in-yajl-min -o out)
   bin=./fuzzer
 
   chance 5  && bin=./fuzzer_laf                       # LAF_ALL build
