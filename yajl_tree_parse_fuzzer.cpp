@@ -174,6 +174,16 @@ extern "C" {
 #include <yajl/yajl_tree.h>
 }
 
+#if defined(__has_feature)
+#  if __has_feature(memory_sanitizer)
+#    include <sanitizer/msan_interface.h>
+#    define UNPOISON(p, n) __msan_unpoison((p), (n))
+#  endif
+#endif
+#ifndef UNPOISON
+#  define UNPOISON(p, n) ((void)0)
+#endif
+
 namespace {
 
 // Inputs larger than this mostly waste time without finding new paths.
@@ -220,7 +230,9 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     return 0;
   }
 
-  char error_buffer[4096];
+  UNPOISON(data, size);
+
+  char error_buffer[4096] = {0};
   yajl_val node = yajl_tree_parse(reinterpret_cast<const char*>(data), error_buffer, sizeof(error_buffer));
 
   // Keep the reads from being optimized away.
