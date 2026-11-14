@@ -1,0 +1,147 @@
+commit b891f2c085a92208b9d391ee8ea2b65a5a6a32a4
+Author: Lloyd Hilaiel <lloyd@hilaiel.com>
+Date:   Sun Aug 23 20:36:22 2026 -0600
+
+    Fix out-of-bounds read on unpaired UTF-16 surrogate escapes
+    
+    yajl_string_decode() peeked past the end of the string when a \uXXXX
+    escape holding a high surrogate was the last thing in it.  After
+    consuming the four hex digits it did an unconditional end++ and then
+    read str[end] and str[end + 1] looking for a \u continuation, and on a
+    match read four more bytes via hexToDigit() -- up to six bytes past the
+    buffer.  Reported by Tristan <TristanInSec@gmail.com>, confirmed here
+    with ASan.
+    
+    The read is only out of bounds for callers of the internal decoder that
+    pass a tightly allocated buffer; via the public parser str[len] is the
+    string's closing quote and so still inside the caller's input.  Two
+    related defects were reachable through yajl_parse(), though:
+    
+      "\ud800A"       decoded to "?", silently eating the following
+                      character, because the unpaired branch had already
+                      advanced end past it
+      "\udc00"        decoded to ed b0 80, emitting a lone surrogate as
+                      invalid UTF-8
+    
+    Bounds check the lookahead, require the continuation to actually be a
+    low surrogate rather than any \uXXXX escape, reject a low surrogate that
+    was not preceded by a high one, and leave end on the last hex digit
+    consumed so an unpaired surrogate no longer swallows the next character.
+    Well-formed pairs are unaffected.
+    
+    Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_014jDpFpiXFGPPNk8GvGX8wE
+
+diff --git a/src/yajl_encode.c b/src/yajl_encode.c
+index fd08258..6c023ac 100644
+--- a/src/yajl_encode.c
++++ b/src/yajl_encode.c
+@@ -137,23 +137,36 @@ void yajl_string_decode(yajl_buf buf, const unsigned char * str,
+                     unsigned int codepoint = 0;
+                     hexToDigit(&codepoint, str + ++end);
+                     end+=3;
+-                    /* check if this is a surrogate */
++                    /* check if this is a surrogate.  a high surrogate is
++                     * only a character when it is followed by a \uXXXX
++                     * escape holding a low surrogate, which needs six more
++                     * bytes to be present.  `end` is left on the last hex
++                     * digit we consumed, so that an unpaired surrogate does
++                     * not swallow the character that follows it. */
+                     if ((codepoint & 0xFC00) == 0xD800) {
+-                        end++;
+-                        if (str[end] == '\\' && str[end + 1] == 'u') {
+-                            unsigned int surrogate = 0;
+-                            hexToDigit(&surrogate, str + end + 2);
+-                            codepoint =
+-                                (((codepoint & 0x3F) << 10) | 
+-                                 ((((codepoint >> 6) & 0xF) + 1) << 16) | 
+-                                 (surrogate & 0x3FF));
+-                            end += 5;
+-                        } else {
++                        unsigned int surrogate = 0;
++                        if (end + 7 <= len &&
++                            str[end + 1] == '\\' && str[end + 2] == 'u')
++                        {
++                            hexToDigit(&surrogate, str + end + 3);
++                        }
++                        if ((surrogate & 0xFC00) != 0xDC00) {
+                             unescaped = "?";
+                             break;
+                         }
++                        codepoint =
++                            (((codepoint & 0x3F) << 10) |
++                             ((((codepoint >> 6) & 0xF) + 1) << 16) |
++                             (surrogate & 0x3FF));
++                        end += 6;
++                    } else if ((codepoint & 0xFC00) == 0xDC00) {
++                        /* a low surrogate with no high surrogate before it
++                         * is not a character; encoding it would emit
++                         * invalid UTF-8 */
++                        unescaped = "?";
++                        break;
+                     }
+-                    
++
+                     Utf32toUtf8(codepoint, utf8Buf);
+                     unescaped = utf8Buf;
+ 
+diff --git a/test/parsing/cases/surrogate_high_then_plain_char.json b/test/parsing/cases/surrogate_high_then_plain_char.json
+new file mode 100644
+index 0000000..4af2cb3
+--- /dev/null
++++ b/test/parsing/cases/surrogate_high_then_plain_char.json
+@@ -0,0 +1 @@
++"\ud800A"
+diff --git a/test/parsing/cases/surrogate_high_then_plain_char.json.gold b/test/parsing/cases/surrogate_high_then_plain_char.json.gold
+new file mode 100644
+index 0000000..a9a6836
+--- /dev/null
++++ b/test/parsing/cases/surrogate_high_then_plain_char.json.gold
+@@ -0,0 +1,2 @@
++string: '?A'
++memory leaks:	0
+diff --git a/test/parsing/cases/surrogate_high_then_unrelated_escape.json b/test/parsing/cases/surrogate_high_then_unrelated_escape.json
+new file mode 100644
+index 0000000..d1d40b2
+--- /dev/null
++++ b/test/parsing/cases/surrogate_high_then_unrelated_escape.json
+@@ -0,0 +1 @@
++"\ud800\u0041"
+diff --git a/test/parsing/cases/surrogate_high_then_unrelated_escape.json.gold b/test/parsing/cases/surrogate_high_then_unrelated_escape.json.gold
+new file mode 100644
+index 0000000..a9a6836
+--- /dev/null
++++ b/test/parsing/cases/surrogate_high_then_unrelated_escape.json.gold
+@@ -0,0 +1,2 @@
++string: '?A'
++memory leaks:	0
+diff --git a/test/parsing/cases/surrogate_low_unpaired.json b/test/parsing/cases/surrogate_low_unpaired.json
+new file mode 100644
+index 0000000..0e37fe9
+--- /dev/null
++++ b/test/parsing/cases/surrogate_low_unpaired.json
+@@ -0,0 +1 @@
++"\udc00"
+diff --git a/test/parsing/cases/surrogate_low_unpaired.json.gold b/test/parsing/cases/surrogate_low_unpaired.json.gold
+new file mode 100644
+index 0000000..cca172e
+--- /dev/null
++++ b/test/parsing/cases/surrogate_low_unpaired.json.gold
+@@ -0,0 +1,2 @@
++string: '?'
++memory leaks:	0
+diff --git a/test/parsing/cases/surrogate_pair_valid.json b/test/parsing/cases/surrogate_pair_valid.json
+new file mode 100644
+index 0000000..0c75a94
+--- /dev/null
++++ b/test/parsing/cases/surrogate_pair_valid.json
+@@ -0,0 +1 @@
++"\ud800\udc00"
+diff --git a/test/parsing/cases/surrogate_pair_valid.json.gold b/test/parsing/cases/surrogate_pair_valid.json.gold
+new file mode 100644
+index 0000000..4280da4
+--- /dev/null
++++ b/test/parsing/cases/surrogate_pair_valid.json.gold
+@@ -0,0 +1,2 @@
++string: '𐀀'
++memory leaks:	0
