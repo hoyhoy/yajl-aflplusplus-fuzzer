@@ -11,17 +11,17 @@
 
 // ASAN
 
-// export AFL_USE_ASAN=1
-// export AFL_USE_UBSAN=1
-// unset AFL_MSAN
-//
-// export AFL_FINAL_SYNC=1
-// export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
-// unset AFL_USE_CFISAN
-// //
-// rm -rf build
-// git clean -fdx
-//
+export AFL_USE_ASAN=1
+export AFL_USE_UBSAN=1
+unset AFL_MSAN
+
+export AFL_FINAL_SYNC=1
+export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
+unset AFL_USE_CFISAN
+
+rm -rf build
+git clean -fdx
+
 // cmake -S . -B build \
 //   -Wno-deprecated -Wno-author \
 //   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
@@ -30,6 +30,7 @@
 //   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
 //   -DCMAKE_BUILD_TYPE=Debug \
 //   -DCMAKE_C_COMPILER=afl-clang-fast \
+//   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
 //   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
 //      -fsanitize=address,undefined,leak,local-bounds \
 //      -fsanitize-address-use-after-scope \
@@ -39,8 +40,8 @@
 //      -fasynchronous-unwind-tables \
 //      -funwind-tables -fno-common \
 //      -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,leak,local-bounds,fuzzer -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,leak,local-bounds,fuzzer -mtune=native -march=native -fuse-ld=lld"
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined -mtune=native -march=native -fuse-ld=lld"
 
 // MSAN
 
@@ -81,21 +82,21 @@
 //    static library's symbols may not resolve.
 
 // MSAN
-// afl-clang-fast++ -DDEBUG -g -glldb \
-//    -fsanitize=memory,fuzzer \
-//    -fsanitize-recover=memory \
-//    -fsanitize-memory-track-origins=2 \
-//    -fsanitize-memory-use-after-dtor \
-//    -fno-optimize-sibling-calls \
-//    -fno-omit-frame-pointer \
-//    -fno-optimize-sibling-calls \
-//    -fasynchronous-unwind-tables \
-//    -funwind-tables \
-//    -fno-common \
-//    -I ./yajl/build/yajl-2.1.1/include \
-//    yajl_tree_parse_fuzzer.cpp \
-//   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
-//   -o fuzzer
+afl-clang-fast++ -DDEBUG -g -glldb \
+   -fsanitize=memory,fuzzer \
+   -fsanitize-recover=memory \
+   -fsanitize-memory-track-origins=2 \
+   -fsanitize-memory-use-after-dtor \
+   -fno-optimize-sibling-calls \
+   -fno-omit-frame-pointer \
+   -fno-optimize-sibling-calls \
+   -fasynchronous-unwind-tables \
+   -funwind-tables \
+   -fno-common \
+   -I ./yajl/build/yajl-2.1.1/include \
+   yajl_tree_parse_fuzzer.cpp \
+  -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+  -o fuzzer
 
 // ASAN
 // afl-clang-fast++ \
