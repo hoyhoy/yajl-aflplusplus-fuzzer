@@ -16,9 +16,9 @@
 // unset AFL_MSAN
 //
 // export AFL_FINAL_SYNC=1
-// export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
+// export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
 // unset AFL_USE_CFISAN
-//
+// //
 // rm -rf build
 // git clean -fdx
 //
@@ -32,7 +32,7 @@
 //   -DCMAKE_C_COMPILER=afl-clang-fast \
 //   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
 //   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
-//      -fsanitize=address,undefined,local-bounds \
+//      -fsanitize=address,undefined,leak,local-bounds \
 //      -fsanitize-address-use-after-scope \
 //      -fsanitize-address-use-after-return=always \
 //      -fno-omit-frame-pointer \
@@ -40,8 +40,8 @@
 //      -fasynchronous-unwind-tables \
 //      -funwind-tables -fno-common \
 //      -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,leak,local-bounds,fuzzer -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,leak,local-bounds,fuzzer -mtune=native -march=native -fuse-ld=lld"
 
 // MSAN
 
@@ -51,7 +51,7 @@
 //
 // unset AFL_USE_CFISAN
 // export AFL_FINAL_SYNC=1
-// export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
+// export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
 //
 // cmake -S . -B build \
 //   -Wno-deprecated -Wno-author \
@@ -74,8 +74,8 @@
 //      -funwind-tables \
 //      -fno-common \
 //      -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld"
 
 // cmake --build build
 
@@ -142,7 +142,7 @@
 // mkdir -p ./asan_log
 // export ASAN_OPTIONS="symbolize=0:\
 // halt_on_error=1:\
-// external_symbolizer_path=/opt/llvm-latest/bin/llvm-symbolizer:\
+// external_symbolizer_path=$(which llvm-symbolizer):\
 // verbosity=1:\
 // strict_string_checks=1:\
 // detect_stack_use_after_return=1:\
@@ -161,7 +161,7 @@
 // detect_leaks=1"
 //
 
-// afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
+afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
    -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
 
 // ---------------------------------------------------------------------------
