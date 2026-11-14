@@ -161,8 +161,8 @@
 // detect_leaks=1"
 //
 
-afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
-   -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
+// afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
+//    -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
 
 // ---------------------------------------------------------------------------
 
