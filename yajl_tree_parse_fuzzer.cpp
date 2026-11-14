@@ -16,6 +16,8 @@
 // unset AFL_USE_CFISAN
 // rm -rf build
 // git clean -fdx
+
+// ASAN
 // cmake -S . -B build \
 //   -Wno-deprecated -Wno-author \
 //   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
@@ -30,20 +32,61 @@
 //      -fsanitize-address-use-after-scope \
 //      -fsanitize-address-use-after-return=always \
 //      -fno-omit-frame-pointer \
-//      -fno-optimize-sibling-calls -mtune=native \
 //      -fno-optimize-sibling-calls \
 //      -fasynchronous-unwind-tables \
 //      -funwind-tables -fno-common \
-//      -march=native -fuse-ld=lld" \
+//      -mtune=native -march=native -fuse-ld=lld" \
 //   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
 //   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
 
+// MSAN
+// cmake -S . -B build \
+//   -Wno-deprecated -Wno-author \
+//   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
+//   -DBUILD_SHARED_LIBS=OFF \
+//   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+//   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
+//   -DCMAKE_BUILD_TYPE=Debug \
+//   -DCMAKE_C_COMPILER=afl-clang-fast \
+//   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
+//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
+//      -fsanitize=memory \
+//      -fsanitize-recover=memory,
+//      -fsanitize-memory-track-origins=2
+//      -fsanitize-memory-use-after-dtor
+//      -fno-optimize-sibling-calls
+//      -fno-omit-frame-pointer \
+//      -fno-optimize-sibling-calls \
+//      -fasynchronous-unwind-tables \
+//      -funwind-tables \
+//      -fno-common \
+//      -mtune=native -march=native -fuse-ld=lld \
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
 
 // cmake --build build
 
 // 2. Build the harness. Source file first, libraries after it, otherwise the
 //    static library's symbols may not resolve.
 
+// MSAN
+// afl-clang-fast++ -DDEBUG -g -glldb \
+//    -fsanitize=memory \
+//    -fsanitize-recover=memory,
+//    -fsanitize-memory-track-origins=2
+//    -fsanitize-memory-use-after-dtor
+//    -fno-optimize-sibling-calls
+//    -fno-omit-frame-pointer \
+//    -fno-optimize-sibling-calls \
+//    -fasynchronous-unwind-tables \
+//    -funwind-tables \
+//    -fno-common \
+//    -I ./yajl/build/yajl-2.1.1/include \
+//    yajl_tree_parse_fuzzer.cpp \
+//   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+//   -o fuzzer
+
+// ASAN
 // afl-clang-fast++ -DDEBUG -g -glldb \
 //    -fsanitize=address,undefined,local-bounds \
 //    -fsanitize-address-use-after-scope \
@@ -129,20 +172,20 @@ constexpr size_t kMaxInputSize = 100 << 20;
 // where surrogate handling bugs tend to show up).
 size_t Walk(yajl_val node) {
   if (node == nullptr) {
-    return 0;
+    return 0ULL;
   }
 
-  size_t sum = 0;
+  size_t sum = 0ULL;
   if (YAJL_IS_STRING(node)) {
     sum += strlen(YAJL_GET_STRING(node));
   } else if (YAJL_IS_NUMBER(node)) {
     sum += strlen(YAJL_GET_NUMBER(node));
   } else if (YAJL_IS_ARRAY(node)) {
-    for (size_t i = 0; i < node->u.array.len; ++i) {
+    for (size_t i = 0ULL; i < node->u.array.len; ++i) {
       sum += Walk(node->u.array.values[i]);
     }
   } else if (YAJL_IS_OBJECT(node)) {
-    for (size_t i = 0; i < node->u.object.len; ++i) {
+    for (size_t i = 0ULL; i < node->u.object.len; ++i) {
       sum += strlen(node->u.object.keys[i]);
       sum += Walk(node->u.object.values[i]);
     }
@@ -153,21 +196,21 @@ size_t Walk(yajl_val node) {
 }  // namespace
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
-  if (size == 0 || size > kMaxInputSize) {
-    return 0;
+  if (size == 0ULL || size > kMaxInputSize) {
+    return 0ULL;
   }
 
   // yajl_tree_parse takes a NUL-terminated string with no length argument, so
   // copy into a std::string to guarantee termination. Bytes after an embedded
   // NUL are never seen by the parser, so skip those inputs rather than let the
   // fuzzer spend time mutating bytes that are ignored.
-  std::string input(reinterpret_cast<const char *>(data), size);
+  const std::string input(reinterpret_cast<const char *>(data), size);
 
   if (input.empty()) {
-    return 0;
+    return 0ULL;
   }
 
-  char error_buffer[4096] = {0};
+  char error_buffer[4096ULL] = {0};
   yajl_val node = yajl_tree_parse(input.c_str(), error_buffer, sizeof(error_buffer));
 
   // Keep the reads from being optimized away.
