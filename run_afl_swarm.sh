@@ -10,7 +10,7 @@ export ASAN_OPTIONS="symbolize=0:halt_on_error=1:external_symbolizer_path=/usr/b
 # Main instance: defaults
 AFL_NO_UI=1 afl-fuzz -M main -t 1000+ \
   -x json.dict -x json_surrogates.dict -x llvm.dict \
-  -i pool=min -o out -- ./fuzzer @@ >/dev/null 2>&1 &
+  -i pool-min -o out -- ./fuzzer @@ >/dev/null 2>&1 &
 
 for i in $(seq 1 $((N-1))); do
   envs=(AFL_NO_UI=1)
@@ -20,7 +20,7 @@ for i in $(seq 1 $((N-1))); do
   envs+=(AFL_USE_ASAN=1)
   envs+=(AFL_AUTORESUME=1)
 
-  args=(-S "s$i" -t 1000+ -x  -x  -i in-yajl-min -o out)
+  args=(-S "s$i" -t 1000+ -i pool-min -o out)
   bin=./fuzzer
 
   chance 5  && bin=./fuzzer_laf                       # LAF_ALL build
