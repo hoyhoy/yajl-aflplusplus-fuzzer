@@ -9,18 +9,19 @@
 // patch -p1 < ../cmake4.diff
 // git commit -m "cmake 4 fixes"
 
+// ASAN
+
 // export AFL_USE_ASAN=1
 // export AFL_USE_UBSAN=1
 // unset AFL_MSAN
-
+//
 // export AFL_FINAL_SYNC=1
 // export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
 // unset AFL_USE_CFISAN
-
+//
 // rm -rf build
 // git clean -fdx
-
-// ASAN
+//
 // cmake -S . -B build \
 //   -Wno-deprecated -Wno-author \
 //   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
@@ -42,39 +43,39 @@
 //   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
 //   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
 
+// MSAN
 
-unset AFL_USE_ASAN
-unset AFL_USE_UBSAN
-export AFL_MSAN=1
-
-unset AFL_USE_CFISAN
-export AFL_FINAL_SYNC=1
-export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
-
-MSAN
-cmake -S . -B build \
-  -Wno-deprecated -Wno-author \
-  -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
-  -DBUILD_SHARED_LIBS=OFF \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-  -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
-  -DCMAKE_BUILD_TYPE=Debug \
-  -DCMAKE_C_COMPILER=afl-clang-fast \
-  -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
-  -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
-     -fsanitize=memory \
-     -fsanitize-recover=memory,
-     -fsanitize-memory-track-origins=2
-     -fsanitize-memory-use-after-dtor
-     -fno-optimize-sibling-calls
-     -fno-omit-frame-pointer \
-     -fno-optimize-sibling-calls \
-     -fasynchronous-unwind-tables \
-     -funwind-tables \
-     -fno-common \
-     -mtune=native -march=native -fuse-ld=lld \
-  -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
-  -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
+// unset AFL_USE_ASAN
+// unset AFL_USE_UBSAN
+// export AFL_MSAN=1
+//
+// unset AFL_USE_CFISAN
+// export AFL_FINAL_SYNC=1
+// export AFL_LLVM_DICT2FILE=/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict;
+//
+// cmake -S . -B build \
+//   -Wno-deprecated -Wno-author \
+//   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
+//   -DBUILD_SHARED_LIBS=OFF \
+//   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+//   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
+//   -DCMAKE_BUILD_TYPE=Debug \
+//   -DCMAKE_C_COMPILER=afl-clang-fast \
+//   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
+//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
+//      -fsanitize=memory \
+//      -fsanitize-recover=memory,
+//      -fsanitize-memory-track-origins=2
+//      -fsanitize-memory-use-after-dtor
+//      -fno-optimize-sibling-calls
+//      -fno-omit-frame-pointer \
+//      -fno-optimize-sibling-calls \
+//      -fasynchronous-unwind-tables \
+//      -funwind-tables \
+//      -fno-common \
+//      -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld" \
+//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined,local-bounds -mtune=native -march=native -fuse-ld=lld"
 
 // cmake --build build
 
