@@ -209,22 +209,19 @@ size_t Walk(yajl_val node) {
 }  // namespace
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
-  if (size == 0ULL || size > kMaxInputSize) {
-    return 0ULL;
+  if (size == 0 || size > kMaxInputSize) {
+    return 0;
   }
 
-  // yajl_tree_parse takes a NUL-terminated string with no length argument, so
-  // copy into a std::string to guarantee termination. Bytes after an embedded
-  // NUL are never seen by the parser, so skip those inputs rather than let the
-  // fuzzer spend time mutating bytes that are ignored.
-  const std::string input(reinterpret_cast<const char *>(data), size);
-
-  if (input.empty()) {
-    return 0ULL;
+  // yajl_tree_parse takes a NUL-terminated string with no length argument.
+  // Bytes after an embedded NUL are never seen by the parser, so skip those
+  // inputs rather than let the fuzzer spend time mutating ignored bytes.
+  if (memchr(data, '\0', size) != nullptr) {
+    return 0;
   }
 
-  char error_buffer[4096ULL] = {0};
-  yajl_val node = yajl_tree_parse(input.c_str(), error_buffer, sizeof(error_buffer));
+  char error_buffer[4096];
+  yajl_val node = yajl_tree_parse(reinterpret_cast<const char*>(data), error_buffer, sizeof(error_buffer));
 
   // Keep the reads from being optimized away.
   static volatile size_t sink;
