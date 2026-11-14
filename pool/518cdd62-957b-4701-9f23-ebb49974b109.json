@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and%d$!!'xcalc\r"xcalc%#x$1$1%d+inf$'aaaa%d%n\x0a%daaaa%d%n\r\x0d$'NaN$+",
+%n$+`xcalc`\x0a!xcalc "and this string has no escapes" ]

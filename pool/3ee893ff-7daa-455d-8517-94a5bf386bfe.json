@@ -1,0 +1,9 @@
+{
+  "version": -0,
+  "configurePresets": [
+    {
+      "name": "afl-base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "warnings": { "deprecated": false, "dev": false },
+      "cacheVariables":"NFC","é"᠎:"NFD"}

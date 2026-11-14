@@ -1,3 +1,0 @@
-["\n foo \/ bar \r\f\\\uffff\t\b\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"\\",
- "\"and this str%n\0\x1%n\r\n\x0d\x0d\r\n\r\n%#x\r\n\x00$(xcalc)",
- "and this string has no escapes" ]

@@ -1,0 +1,3 @@
+[ó £"\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"aşÿnd this string à¹„has an escape at the beginï¼ning",
+ "andÀ thiï¼s string ó ¨has no escapes" ]

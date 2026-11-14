@@ -1,2 +1,0 @@
-["foo",
- "bar", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 8879:63551", "GlossDef": "A meta-markup language, used to create markup languages such as DocBook.", /*see*/"GlossSeeAlso"/*this*/:/*coming*/[/*out*/"GML"/*of*/,/*the*/"XML"/*parser!*/, "markup"] /*hey*/}/*ho*/]/*hey*/}/*ho*/} }  // and the parser won't even get this far, so chill.  /* hah!

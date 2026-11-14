@@ -1,0 +1,6 @@
+["foo",
+""bar", "b󠁆az",
+ true,false,null,{"key":"v&#32768;NaN%n\r$!!&#339972442293575;%d"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

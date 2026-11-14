@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an escape at the beginning",
+$`\x00%d%s!!`xcalc`&#000;$1%nNaNaaaa%d%n\naaaa%d%n%s"and this string has no escapes" ]

@@ -1,0 +1,1 @@
+{ "glossary": { /* you */ "title": /**/ "example glossary", /*should*/"GlossDiv": { "title": /*never*/"S", /*ever*/"GlossList": [ { "ID": "SGML", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 170141183460469231731687303715884105727:17460766", "GlossDef": "A meta-markup language, used to create markup languages such asd"

@@ -1,0 +1,5 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an, ﷺtrue": true,
+	"boolean, false": false,
+	"null": null
+}

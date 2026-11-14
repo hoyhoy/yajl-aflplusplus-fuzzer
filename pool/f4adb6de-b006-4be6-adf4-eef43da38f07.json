@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an escape aó €£ó €±t the be+/v/ginning",
+ "and this á…íº­ string hó ®as no escapes" ]

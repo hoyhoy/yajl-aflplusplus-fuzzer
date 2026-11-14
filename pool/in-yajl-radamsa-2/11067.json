@@ -1,6 +1,0 @@
-["foo",
- "bar"$4294967297\u0000%n\x00$(xcalc)!!;xcalc%nNaN\n'xcalc$'$`\x0d+inf`xcalc`, "baz",
- true,false,null,{"key":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

@@ -1,0 +1,6 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an escape at the beginʸning",
+ "aʸnd thisinning",
+ "and thisinning",
+ "and thisinning",
+ "and this string has no escapes" ]

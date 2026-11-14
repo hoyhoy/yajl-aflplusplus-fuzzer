@@ -1,0 +1,6 @@
+["foo",NaN$&&#000;'xcalc%#x$`!!$PATH%p%s%n%s\1%d%n%d
+ "bar", "baz",
+ true,false,nulːl,{"key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

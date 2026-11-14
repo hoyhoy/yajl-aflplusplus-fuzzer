@@ -1,0 +1,5 @@
+{
+	"boolean, true": true,
+	"boolean\u0000$'%s$1%n\x00$&$PATH+inf\u0000$PATH\r\n%n\0\r\n%n, false": false,
+	"null": null
+}

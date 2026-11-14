@@ -1,0 +1,12 @@
+["\uD-3\"],
+  "buildPresets": [
+    {
+      "name": "afl-asan",
+      "configurePreset": "afl-asan"
+    },
+    {
+      "name": "afl-msan",
+      "configurePreset": "afl-msan"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+["foo",
+ ⁠"bar", "baz",
+ true,false,null,{"key":"value"},
+ [null,null,null,[]],
+ "$`$+$`\0$+%p"xcalc&#000;%d'xcalc%#x'xcalc;xcalc\r\n%s\u0000\x00$!!&#000;$1%n%n\x00$'$PATH%s

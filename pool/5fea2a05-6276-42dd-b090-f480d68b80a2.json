@@ -1,0 +1,4 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"anó šd this string has an+/v-4294967297À escape at the bó •ó Šegï½°inning",
+ "and this ÀŒstring has no 
+escapes" ]

@@ -1,0 +1,6 @@
+[󠀰"foo",
+ "bar", "ba$+\x32769a+inf\r`xใcalc`\r'xcalcNaN;xcalc%n$`%n$&z",
+ ﻿true,false,null,{"key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

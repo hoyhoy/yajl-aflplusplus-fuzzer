@@ -1,6 +1,0 @@
-["foo",
- "bar", "baz",
- true,false,null,{"key":"\x0d\x0a$+\rvalue"},
- [null,null,null,[]],
- "\n\r\\"
-]

@@ -1,0 +1,6 @@
+["foo",
+ "bar", "\n$&\n\x-2a$'\r\n%d\---170141183460469231731687303713736687613;xca￿lc&#-18446744073709551615;\r\n%p!xcalc$'$'\x1a!xcalc%p\n$&",
+ true,false,null,{"key":"value"},
+ [nul󠁭l,null,null,[]],
+ "\n\r\\"
+]

@@ -1,0 +1,2 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an escape at the beginning"\r%s\r\n%p$'\0`xcalc`NaN\r$PATH$+$+$'\r\r"and this string has no escapes" ]

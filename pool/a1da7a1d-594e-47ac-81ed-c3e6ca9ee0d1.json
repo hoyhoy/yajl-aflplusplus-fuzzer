@@ -1,0 +1,5 @@
+["foo",
+ "b\x0d$PATH\x-1aaaa$!!$(xcalc)&#000;\u0000$`\r$(xcalc)!xcalc&#000;%n\x0a$`\0\0`xcalc`$+&#000;\u0000",$`$!!$&+inf$`$`$(xcalc)%n\r&#000;$' "baz",
+ true,false,null ,{"key":"value"},
+ [nul󠁵l,n󠀤ull,null󠀳$'\r\n"xcalc$PATH\r\n$9223372036854775807&#000;\u128%d"\n\r\\"
+]

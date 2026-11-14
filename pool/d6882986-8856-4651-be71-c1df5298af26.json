@@ -1,0 +1,6 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"key"$1NaN!!\n$&%#x$+&#000;\r\n'xcalc%#x%#x$1%n"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

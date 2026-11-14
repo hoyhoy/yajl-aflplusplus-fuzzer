@@ -1,0 +1,5 @@
+{
+	"boolean, true": true,
+	"b$!!\0;xcalc&#000;$&\r\n": false,
+	"null": null
+}

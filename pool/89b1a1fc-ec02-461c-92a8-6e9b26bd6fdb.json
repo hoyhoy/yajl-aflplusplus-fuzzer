@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\ufffﾠf\t\b\"\\",
+ "\"and t󠀁his string has an escape at󠁞 the beginning",
+ "and this string has no escapes" ]

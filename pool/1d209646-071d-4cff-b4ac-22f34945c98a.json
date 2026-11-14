@@ -1,0 +1,6 @@
+["foo",
+ "bar", "ba$(xcalc)$&&#2;\x28594d$!!\x00$+$PATH&#1;'xcalc%#x$'!!$(xcalc)\u-32768\x0a\r$&;xcalc",
+ true,false,null,{"key":"󠁼value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

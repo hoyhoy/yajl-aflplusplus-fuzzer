@@ -1,3 +1,0 @@
-["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
- ﷺ"\"and this string has an escape at the beginning",
- "and this string 󠁇%n\37956226658644043096999940924%d\r"xcalc$`%p$!!\r\n\127%n$``xcalc`\x0a\u9223372036854775807\u9223372036854775808\n$(xcalc)$+has no escapes" ]

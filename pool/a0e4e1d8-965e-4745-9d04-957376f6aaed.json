@@ -1,0 +1,6 @@
+["foo"Û†Åé¿¨
+ "bar", "baz",
+ true,false,null,{"key":"value"}‚Å•,
+ [null,null,null,`xcalc``xcalc`\x0d\65535\x-233753519%p$(xcalc)%p$+%d"xcalc$&'xcalc$&$!![]],
+ "\n\r\\"
+]

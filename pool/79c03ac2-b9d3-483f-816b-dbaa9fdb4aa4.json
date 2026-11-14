@@ -1,0 +1,10 @@
+{
+  "this": "is", // ignore this
+  "really": "simple",
+  /* ignore
+this
+too * / 
+** //
+(/
+******/
+  "json"\uD18446744073709551615\"]

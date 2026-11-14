@@ -1,7 +1,0 @@
-[
-		"foo", true,
-		true, "blue",
-		󠀥"ba\n\r$(xcalc)󠁥\r\x32769d\u-18461522015$1`xcalc`+inf$+\x4294967294;xcalc+inf\x0a$&'xcalc"xcalc420075011167285201423373134$!!NaN\x-129d", "oh boo hoo!",
-        - 
-]
-

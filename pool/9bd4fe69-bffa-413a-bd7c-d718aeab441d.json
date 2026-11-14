@@ -1,0 +1,5 @@
+["foo",
+ "bar", "baz",
+ true,false,nul󠁸l,{"key":"v󠁊alue"},
+ [null,null,nul\x0d`xcalc`$`%n"\n\r\\"
+]

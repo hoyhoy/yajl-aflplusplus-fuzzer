@@ -1,0 +1,5 @@
+{
+	"boolean, true": true,
+	"b𐀀oolean, false": false,
+	"null": null
+}

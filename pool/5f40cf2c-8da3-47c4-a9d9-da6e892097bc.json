@@ -1,0 +1,4 @@
+["foo",
+ "bar", "baz",
+ true,false,null,{"k\n\r\\"
+]

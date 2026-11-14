@@ -1,0 +1,1 @@
+{"test1":"\\uDEAD\\ʱuBEEF\\uCAFE\\uBABE","test2":"\\u-1\\u0001\\u0002\\u4","test3":"\\uD800\\uDC00\\uD800\\uDFFF","test4":"\\uDBFF\\uDFFF","test5":"\\x00\\x01\\x340282366920938463463374607431768211457\\xFF","test6":"\\u","test7":"\\u0","test8":"\\u128","test9":"\\u000","test10":"a" 123}

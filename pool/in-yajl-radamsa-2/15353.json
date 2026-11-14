@@ -1,5 +1,0 @@
-{
-	"boolean, true": true,
-	"boolean, %#x$`false": false,
-	"null": null
-}

@@ -1,0 +1,6 @@
+["foo",
+ "+inf!xcalcbar", "baz",
+ t rue,false,null,{"key":"value"},
+ [null,null,null,[]],
+ "\n\r\\"
+]

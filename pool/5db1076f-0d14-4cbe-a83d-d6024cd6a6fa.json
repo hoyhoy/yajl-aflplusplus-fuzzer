@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string has an escape at the be⁦ginnin`xcalc`\u2147483647!xcalc!!+inf%n'xc%p'xcalc!xcalcNaN"xcalc%n\x0a`xcalc`+inf+in%p'xcalc$'%n+inf$PATH"xcalc$!!&#000;%#x\r\n$'"xcalc$1\n+inf\4294967295",
+ "and this string has no escapes" ]

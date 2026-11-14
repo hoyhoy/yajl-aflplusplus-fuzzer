@@ -1,0 +1,64 @@
+#!/bin/bash
+# More aggressive fuzzing - inject malformed JSON in different positions
+
+counter=0
+echo "Starting aggressive fuzzing..."
+
+for file in n_*.json i_*.json; do
+    counter=$((counter + 1))
+    echo "[$counter] Aggressive test: $file"
+    
+    payload=$(cat "$file")
+    
+    # Strategy 1: Use malformed JSON as the path value
+    echo "  Strategy 1: Malformed path value"
+    curl -sS -u access_key1:aspera http://localhost:9091/access_keys \
+        -H "Content-Type: application/json" \
+        --data-binary "{\"path\":$payload}" \
+        -w "\nHTTP:%{http_code}\n" 2>&1 | head -5
+    
+    # Strategy 2: Nested in array
+    echo "  Strategy 2: Nested in array"
+    curl -sS -u access_key1:aspera http://localhost:9091/access_keys \
+        -H "Content-Type: application/json" \
+        --data-binary "{\"path\":\"/test\",\"tags\":[$payload]}" \
+        -w "\nHTTP:%{http_code}\n" 2>&1 | head -5
+    
+    # Strategy 3: As object value
+    echo "  Strategy 3: As object value"
+    curl -sS -u access_key1:aspera http://localhost:9091/access_keys \
+        -H "Content-Type: application/json" \
+        --data-binary "{\"path\":\"/test\",\"metadata\":$payload}" \
+        -w "\nHTTP:%{http_code}\n" 2>&1 | head -5
+    
+    # Strategy 4: Direct malformed payload (no wrapping)
+    echo "  Strategy 4: Direct payload"
+    curl -sS -u access_key1:aspera http://localhost:9091/access_keys \
+        -H "Content-Type: application/json" \
+        --data-binary "@$file" \
+        -w "\nHTTP:%{http_code}\n" 2>&1 | head -5
+    
+    # Check if curl failed (server might be down)
+    if [ $? -ne 0 ]; then
+        echo "!!! SERVER CRASHED OR UNREACHABLE after $file !!!"
+        exit 1
+    fi
+    
+    sleep 0.02
+    echo "---"
+    
+    # Every 20 files, check if server is still responding
+    if [ $((counter % 20)) -eq 0 ]; then
+        echo "Health check at test $counter..."
+        response=$(curl -sS -u access_key1:aspera http://localhost:9091/access_keys \
+            -H "Content-Type: application/json" \
+            --data-binary '{"path":"/test"}' 2>&1)
+        if [ $? -ne 0 ]; then
+            echo "!!! SERVER NOT RESPONDING !!!"
+            exit 1
+        fi
+        echo "Server still alive"
+    fi
+done
+
+echo "Completed $counter aggressive tests. Server survived."

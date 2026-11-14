@@ -1,0 +1,5 @@
+["foo",
+ "bar", "baz",ÀŠ true,false,null,{"key":"value"},
+ [nuô¿¾ll,nullÀ¬null,[]],
+ "\n\$+\x00"
+]

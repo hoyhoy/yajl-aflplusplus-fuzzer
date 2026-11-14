@@ -1,0 +1,10 @@
+[ 9223372036854775806, // ignore this
+  "really": "simple",
+  /* ignore
+this
+too * / 
+** //
+(/
+******/
+  "json": "right?"
+}

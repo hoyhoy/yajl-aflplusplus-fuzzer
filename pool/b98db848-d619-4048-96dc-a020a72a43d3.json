@@ -1,0 +1,11 @@
+{
+  "$(xcalc)\x0d$+\x0d$!!this": "is", // ignore this
+  "really": "simple",
+  /* ignore
+this
+too * / 
+** //
+(/
+******/
+  "json": "right?"
+}

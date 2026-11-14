@@ -1,4 +1,0 @@
-{"test1":"\\uDEAD\\uBEEF\\uCAFE\\uBABE","test125":"\\u-1\\u0001\\u340282366920938463463374607431768211456\\u0003","test3":"\\uD800\\uDC00\\uD18446744073709552417\\uDFFF","test4":"\\uDBFF\\uDFFF","test5":"\\x00\\x01\\x02\\xFF","test6":"value"},
- [null,null,null,[]],
- "\n\r\\"
-]

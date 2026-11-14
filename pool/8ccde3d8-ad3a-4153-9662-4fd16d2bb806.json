@@ -1,0 +1,5 @@
+{%s\n%n\r%n%#x
+	"boolean, true": true¿¨
+	"boolean, false": false,
+	"null": null
+}

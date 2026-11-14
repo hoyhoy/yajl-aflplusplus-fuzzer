@@ -1,0 +1,48 @@
+{"emoji":"😀😃😄😁😆😅🤣😂🙂🙃😉😊😇🥰😍🤩😘😗☺😚😙🥲😋😛😜🤪😝🤑🤗🤭🤫🤔🤐🤨😐😑😶😏😒🙄😬🤥😌😔😪🤤😴😷🤒🤕🤢🤮🤧🥵🥶🥴😵🤯🤠🥳🥸😎🤓🧐","surrogate_pairs":"\uD83D\uDE00\uD83D\uDE01\uD83D\uDE02\uD83D\uDE03\uD83D\uDE04","mixed":"Hello\u0000World\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u000E\u000F","rtl":"مرحبا العالم שלום עולם","zalgo":"H̷̡̪̯ͨ͊̽̅̾̎Ȩ̬̩̾͛ͪ̈́̀́͘ ̶̧̨̱̹̭̯ͧ̾ͬC̷̙̲̝͖ͭ̏ͥͮ͟Oͮ͏̮̪̝͍M̲̖͊̒ͪͩͬ̚̚͜Ȇ̴̟̟͙̞ͩ͌͝S̨̥̫͎̭ͯ̿̔̀ͅ","bidi_override":"\u202E\u202D\u202C\u202B\u202A","zero_width":"a\u200Bb\u200Cc\u200Dd\uFEFF","combining":"e\u0301\u0300\u0302\u0303\u0304","fullwidth":"ＡＢＣＤＥＦＧ１２３４５６７８９０","control_chars":"\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u3E\u000F\u0010\u0011\u0012\u00153": "OLD"
+      },
+      "environment": {
+          "AFL_USE_CFISAN": null,
+          "AFL_FINAL_SYNC": "1",
+          "AFL_LLVM_DICT2FILE": "/Users/jperrie/backup/examples/yajl_fuzzer/llvm.dict"
+      }
+    },
+    {
+      "name": "afl-asan",
+      "displayName": "AFL++ + ASan/UBSan",
+      "inherits": "afl-base",
+      "environment": {
+        "AFL_USE_ASAN": "1"
+      },
+      "cacheVariables": {
+        "CMAKE_C_FLAGS_DEBUG": "-DDEBUG -g -glldb -fPIC -fsanitize=address,undefined,local-bounds -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -fasynchronous-unwind-tables -funwind-tables -fno-common -mtune=native -march=native -fuse-ld=lld",
+        "CMAKE_CXX_FLAGS_DEBUG": "-DDEBUG -g -glldb -fPIC -fsanitize=address,undefined,local-bounds -fsanitize-address-use-after-scope -fsanitize-address-use-after-return=always -fno-omit-frame-pointer -fno-optimize-sibling-calls -fasynchronous-unwind-tables -funwind-tables -fno-common -mtune=native -march=native -fuse-ld=lld",
+        "CMAKE_EXE_LINKER_FLAGS": "-fsanitize=address,undefined,local-bounds -fuse-ld=lld",
+        "CMAKE_SHARED_LINKER_FLAGS": "-fsanitize=address,undefined,local-bounds -fuse-ld=lld"
+      }
+    },
+    {
+      "name": "afl-msan",
+      "displayName": "AFL++ + MSan",
+      "inherits": "afl-base",
+      "environment": {
+        "AFL_MSAN": "1"
+      },
+      "cacheVariables": {
+        "CMAKE_C_FLAGS_DEBUG": "-DDEBUG -g -glldb -fPIC -fsanitize=memory -fsanitize-recover=memory -fsanitize-memory-track-origins=2 -fsanitize-memory-use-after-dtor -fno-omit-frame-pointer -fno-optimize-sibling-calls -fasynchronous-unwind-tables -funwind-tables -fno-common -mtune=native -march=native -fuse-ld=lld",
+        "CMAKE_CXX_FLAGS_DEBUG": "-DDEBUG -g -glldb -fPIC -fsanitize=memory -fsanitize-recover=memory -fsanitize-memory-track-origins=2 -fsanitize-memory-use-after-dtor -fno-omit-frame-pointer -fno-optimize-sibling-calls -fasynchronous-unwind-tables -funwind-tables -fno-common -mtune=native -march=native -fuse-ld=lld",
+        "CMAKE_EXE_LINKER_FLAGS": "-fsanitize=memory -fuse-ld=lld",
+        "CMAKE_SHARED_LINKER_FLAGS": "-fsanitize=memory -fuse-ld=lld"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "afl-asan",
+      "configurePreset": "afl-asan"
+    },
+    {
+      "name": "afl-msan",
+      "configurePreset": "afl-msan"
+    }
+  ]
+}

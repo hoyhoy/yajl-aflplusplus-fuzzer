@@ -1,0 +1,8 @@
+"\ud1\udc-2043991139"
+    },
+    {
+      "name": "afl-msan",
+      "configurePreset": "afl-msan"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+["\n foo \/ bar \r\f\\\uffff\t\b\"\\",
+ "\"and this string %#x\u0$!À¡\x--1%#x%s`xcalc`+inf\r",
+ "and this string has no escapes" ]

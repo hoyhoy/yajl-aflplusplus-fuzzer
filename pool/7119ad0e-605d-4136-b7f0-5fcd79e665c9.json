@@ -1,0 +1,6 @@
+["foo¿¢,
+ Û†Å∏"bar", "baz",
+ true,false,null,{"key":"value"},
+Û†Å‚Å¶∑Û†Åô [null¿¨null,Û†Ä∏null,[]],
+ "\n\r\\"
+]
