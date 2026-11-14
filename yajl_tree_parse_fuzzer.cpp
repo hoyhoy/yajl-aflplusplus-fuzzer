@@ -6,7 +6,7 @@
 //
 // git clone https://github.com/lloyd/yajl.git
 // cd yajl
-// patch -p1 < ../cmake4.diff
+// patch -p1 < ../patches/cmake4.diff
 // git commit -m "cmake 4 fixes"
 
 // ASAN
@@ -53,29 +53,27 @@
 // export AFL_FINAL_SYNC=1
 // export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
 //
-// cmake -S . -B build \
-//   -Wno-deprecated -Wno-author \
-//   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
-//   -DBUILD_SHARED_LIBS=OFF \
-//   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-//   -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
-//   -DCMAKE_BUILD_TYPE=Debug \
-//   -DCMAKE_C_COMPILER=afl-clang-fast \
-//   -DCMAKE_CXX_COMPILER=afl-clang-fast++ \
-//   -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
-//      -fsanitize=memory \
-//      -fsanitize-recover=memory,
-//      -fsanitize-memory-track-origins=2
-//      -fsanitize-memory-use-after-dtor
-//      -fno-optimize-sibling-calls
-//      -fno-omit-frame-pointer \
-//      -fno-optimize-sibling-calls \
-//      -fasynchronous-unwind-tables \
-//      -funwind-tables \
-//      -fno-common \
-//      -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld" \
-//   -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld"
+cmake -S . -B build \
+  -Wno-deprecated -Wno-author \
+  -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  -DCMAKE_POLICY_DEFAULT_CMP0153=OLD \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DCMAKE_C_FLAGS_DEBUG="-DDEBUG -g -glldb -fPIC \
+     -fsanitize=memory \
+     -fsanitize-recover=memory \
+     -fsanitize-memory-track-origins=2 \
+     -fsanitize-memory-use-after-dtor \
+     -fno-optimize-sibling-calls\
+     -fno-omit-frame-pointer \
+     -fno-optimize-sibling-calls \
+     -fasynchronous-unwind-tables \
+     -funwind-tables \
+     -fno-common \
+     -mtune=native -march=native -fuse-ld=lld" \
+  -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=memory -mtune=native -march=native -fuse-ld=lld"
 
 // cmake --build build
 

@@ -1,5 +1,5 @@
 diff --git a/src/yajl_parser.c b/src/yajl_parser.c
-index 1a528a6..5ec32cf 100644
+index 1a528a6..1d32d22 100644
 --- a/src/yajl_parser.c
 +++ b/src/yajl_parser.c
 @@ -35,30 +35,26 @@
@@ -11,8 +11,7 @@ index 1a528a6..5ec32cf 100644
 -    const unsigned char *pos = number;
 -    if (*pos == '-') { pos++; sign = -1; }
 -    if (*pos == '+') { pos++; }
-+    char buf[21] = {0};
- 
+-
 -    while (pos < number + length) {
 -        if ( ret > MAX_VALUE_TO_MULTIPLY ) {
 -            errno = ERANGE;
@@ -28,9 +27,9 @@ index 1a528a6..5ec32cf 100644
 -            return sign == 1 ? LLONG_MAX : LLONG_MIN;
 -        }
 -        ret += (*pos++ - '0');
-+#ifdef NDEBUG
++    char buf[21] = {0};
++
 +    char *endptr = NULL;
-+#endif
 +
 +    if (length >= sizeof(buf)) {
 +        errno = ERANGE;
@@ -45,6 +44,8 @@ index 1a528a6..5ec32cf 100644
 +    assert(endptr != NULL); // endptr should always be NULL.
 +                            // the parser catches invalid integers
 +                            // before parse_integer is called...
++
++    (void*) endptr; // needed for /ANALYZE and -fanalyzer in release mode.
 +
 +    return ret;
  }
