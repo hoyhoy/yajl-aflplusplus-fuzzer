@@ -83,10 +83,10 @@
 // MSAN
 // afl-clang-fast++ -DDEBUG -g -glldb \
 //    -fsanitize=memory,fuzzer \
-//    -fsanitize-recover=memory,
-//    -fsanitize-memory-track-origins=2
-//    -fsanitize-memory-use-after-dtor
-//    -fno-optimize-sibling-calls
+//    -fsanitize-recover=memory \
+//    -fsanitize-memory-track-origins=2 \
+//    -fsanitize-memory-use-after-dtor \
+//    -fno-optimize-sibling-calls \
 //    -fno-omit-frame-pointer \
 //    -fno-optimize-sibling-calls \
 //    -fasynchronous-unwind-tables \
