@@ -84,7 +84,7 @@
 
 // MSAN
 // afl-clang-fast++ -DDEBUG -g -glldb \
-//    -fsanitize=memory \
+//    -fsanitize=memory,fuzzer \
 //    -fsanitize-recover=memory,
 //    -fsanitize-memory-track-origins=2
 //    -fsanitize-memory-use-after-dtor
@@ -100,8 +100,9 @@
 //   -o fuzzer
 
 // ASAN
-// afl-clang-fast++ -DDEBUG -g -glldb \
-//    -fsanitize=address,undefined,local-bounds \
+// afl-clang-fast++ \
+//     -DDEBUG -g -glldb \
+//    -fsanitize=address,undefined,local-bounds,fuzzer \
 //    -fsanitize-address-use-after-scope \
 //    -fsanitize-address-use-after-return=always \
 //    -fno-omit-frame-pointer \
@@ -115,22 +116,22 @@
 //   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
 //   -o fuzzer
 
-//   AFL_LLVM_CMPLOG=1 afl-clang-fast++ \
-//       -DDEBUG -g -glldb \
-//      -fsanitize=address,undefined,local-bounds \
-//      -fsanitize-address-use-after-scope \
-//      -fsanitize-address-use-after-return=always \
-//      -fno-omit-frame-pointer \
-//      -fno-optimize-sibling-calls -mtune=native \
-//      -fno-optimize-sibling-calls \
-//      -fasynchronous-unwind-tables \
-//      -funwind-tables -fno-common \
-//      -march=native -fuse-ld=lld" \
-//      -I ./yajl/build/yajl-2.1.1/include \
-//      yajl_tree_parse_fuzzer.cpp \
-//     -L ./yajl/build/yajl-2.1.1/lib
-//     -o fuzzer_cmplog
-//     -lyajl_s \
+// AFL_LLVM_CMPLOG=1 afl-clang-fast++ \
+//     -DDEBUG -g -glldb \
+//    -fsanitize=address,undefined,local-bounds,fuzzer \
+//    -fsanitize-address-use-after-scope \
+//    -fsanitize-address-use-after-return=always \
+//    -fno-omit-frame-pointer \
+//    -fno-optimize-sibling-calls -mtune=native \
+//    -fno-optimize-sibling-calls \
+//    -fasynchronous-unwind-tables \
+//    -funwind-tables -fno-common \
+//    -march=native -fuse-ld=lld \
+//    -I ./yajl/build/yajl-2.1.1/include \
+//    yajl_tree_parse_fuzzer.cpp \
+//   -L ./yajl/build/yajl-2.1.1/lib \
+//   -o fuzzer_cmplog \
+//   -lyajl_s
 
 // rm -Rf in-yajl-min
 // afl-cmin -T all -i in-yajl -o in-yajl-min -- ./fuzzer --
@@ -138,30 +139,31 @@
 //
 // 3. Run.
 //
-//   mkdir -p ./asan_log
-//   export ASAN_OPTIONS="symbolize=0:\
-//   halt_on_error=1:\
-//   external_symbolizer_path=/opt/llvm-latest/bin/llvm-symbolizer:\
-//   verbosity=1:\
-//   strict_string_checks=1:\
-//   detect_stack_use_after_return=1:\
-//   check_initialization_order=1:\
-//   detect_invalid_pointer_pairs=1:\
-//   alloc_dealloc_mismatch=1:\
-//   exitcode=1:\
-//   fast_unwind_on_malloc=0:\
-//   debug=1:\
-//   color=always:\
-//   print_cmdline=1:\
-//   print_summary=1:\
-//   abort_on_error=1:\
-//   log_path=$PWD/asan_log/asan:\
-//   log_exe_name=1:\
-//   detect_leaks=1"
+// mkdir -p ./asan_log
+// export ASAN_OPTIONS="symbolize=0:\
+// halt_on_error=1:\
+// external_symbolizer_path=/opt/llvm-latest/bin/llvm-symbolizer:\
+// verbosity=1:\
+// strict_string_checks=1:\
+// detect_stack_use_after_return=1:\
+// check_initialization_order=1:\
+// detect_invalid_pointer_pairs=1:\
+// alloc_dealloc_mismatch=1:\
+// exitcode=1:\
+// fast_unwind_on_malloc=0:\
+// debug=1:\
+// color=always:\
+// print_cmdline=1:\
+// print_summary=1:\
+// abort_on_error=1:\
+// log_path=$PWD/asan_log/asan:\
+// log_exe_name=1:\
+// detect_leaks=1"
 //
-//   rm -Rf out-*
-//   rm -Rf out-*; afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
-     -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
+
+// afl-fuzz -t 10000 -M main-$HOSTNAME -c ./fuzzer_cmplog -x json.dict -x json_surrogates.dict -x llvm.dict\
+   -i in-yajl -o out-$(date +%Y-%m-%d-%H-%M-%S) -- ./fuzzer
+
 // ---------------------------------------------------------------------------
 
 #include <stddef.h>
