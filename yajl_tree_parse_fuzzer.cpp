@@ -164,25 +164,15 @@
 
 // ---------------------------------------------------------------------------
 
-#include <stddef.h>
-#include <stdint.h>
-#include <string.h>
-
+#include <cstddef>
+#include <cstdint>
+#include <cstdlib>
+#include <cstring>
 #include <string>
 
 extern "C" {
 #include <yajl/yajl_tree.h>
 }
-
-#if defined(__has_feature)
-#  if __has_feature(memory_sanitizer)
-#    include <sanitizer/msan_interface.h>
-#    define UNPOISON(p, n) __msan_unpoison((p), (n))
-#  endif
-#endif
-#ifndef UNPOISON
-#  define UNPOISON(p, n) ((void)0)
-#endif
 
 namespace {
 
@@ -226,14 +216,16 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   // yajl_tree_parse takes a NUL-terminated string with no length argument.
   // Bytes after an embedded NUL are never seen by the parser, so skip those
   // inputs rather than let the fuzzer spend time mutating ignored bytes.
+  size_t new_size = size;
   if (memchr(data, '\0', size) != nullptr) {
-    return 0;
+    new_size = size - 1ULL;
   }
 
-  UNPOISON(data, size);
+  char *input = static_cast<char *>(calloc(new_size + 1ULL, sizeof(char)));
+  memcpy(static_cast<void*>(input), static_cast<void*>( (void*) data), new_size);
 
   char error_buffer[4096] = {0};
-  yajl_val node = yajl_tree_parse(reinterpret_cast<const char*>(data), error_buffer, sizeof(error_buffer));
+  yajl_val node = yajl_tree_parse(reinterpret_cast<const char*>(input), error_buffer, sizeof(error_buffer));
 
   // Keep the reads from being optimized away.
   static volatile size_t sink;
