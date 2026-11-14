@@ -39,5 +39,5 @@ for i in $(seq 1 ${N}); do
     args+=(-c ./fuzzer_cmplog -l "$l")
   fi
 
-  env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" @@ >/dev/null 2>&1 &
+  env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" >/dev/null 2>&1 &
 done
