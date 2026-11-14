@@ -10,7 +10,7 @@ export ASAN_OPTIONS="symbolize=0:halt_on_error=1:external_symbolizer_path=/usr/b
 # Main instance: defaults
 AFL_NO_UI=1 afl-fuzz -M main -t 1000+ \
   -x json.dict -x json_surrogates.dict -x llvm.dict \
-  -i pool -o out -- ./fuzzer @@ >/dev/null 2>&1 &
+  -i pool=min -o out -- ./fuzzer @@ >/dev/null 2>&1 &
 
 for i in $(seq 1 $((N-1))); do
   envs=(AFL_NO_UI=1)
@@ -43,5 +43,6 @@ for i in $(seq 1 $((N-1))); do
     args+=(-c ./fuzzer_cmplog -l "$l")
   fi
 
+  echo afl-fuzz "${args[@]}" -- "$bin"
   env "${envs[@]}" afl-fuzz "${args[@]}" -- "$bin" @@ >/dev/null 2>&1 &
 done
