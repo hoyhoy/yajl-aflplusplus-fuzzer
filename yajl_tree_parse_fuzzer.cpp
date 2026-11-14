@@ -233,5 +233,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   sink = (node != nullptr) ? Walk(node) : strlen(error_buffer);
 
   yajl_tree_free(node);  // safe on NULL
+  free( (void*) input);
+
   return 0;
 }
