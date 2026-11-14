@@ -5,7 +5,7 @@ chance() { [ $((RANDOM % 100)) -lt "$1" ]; }   # chance 30 -> true ~30% of the t
 
 mkdir -p out
 
-export ASAN_OPTIONS="symbolize=0:halt_on_error=1:external_symbolizer_path=/usr/bin/llvm-symbolizer:verbosity=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:detect_invalid_pointer_pairs=1:alloc_dealloc_mismatch=1:exitcode=1:fast_unwind_on_malloc=0:debug=1:color=always:print_cmdline=1:print_summary=1:abort_on_error=1:log_path=/home/jperrie/yajl-aflplusplus-fuzzer/asan_log/asan:log_exe_name=1:detect_leaks=1"
+export ASAN_OPTIONS="symbolize=0:halt_on_error=1:external_symbolizer_path=/usr/bin/llvm-symbolizer:verbosity=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:detect_invalid_pointer_pairs=1:alloc_dealloc_mismatch=1:exitcode=1:fast_unwind_on_malloc=0:debug=1:color=always:print_cmdline=1:print_summary=1:abort_on_error=1:log_path=${HOME}/yajl-aflplusplus-fuzzer/asan_log/asan:log_exe_name=1:detect_leaks=1"
 export AFL_TESTCACHE_SIZE=1000
 
 for i in $(seq 1 ${N}); do
@@ -38,6 +38,7 @@ for i in $(seq 1 ${N}); do
     fi
     args+=(-c ./fuzzer_cmplog -l "$l")
   fi
-
+  
+  echo   env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" ">/dev/null 2>&1"
   env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" >/dev/null 2>&1 &
 done
