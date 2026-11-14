@@ -11,16 +11,16 @@
 
 // ASAN
 
-export AFL_USE_ASAN=1
-export AFL_USE_UBSAN=1
-unset AFL_MSAN
-
-export AFL_FINAL_SYNC=1
-export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
-unset AFL_USE_CFISAN
-
-rm -rf build
-git clean -fdx
+// export AFL_USE_ASAN=1
+// export AFL_USE_UBSAN=1
+// unset AFL_MSAN
+//
+// export AFL_FINAL_SYNC=1
+// export AFL_LLVM_DICT2FILE=$HOME/yajl-aflplusplus-fuzzer/llvm.dict;
+// unset AFL_USE_CFISAN
+//
+// rm -rf build
+// git clean -fdx
 
 // cmake -S . -B build \
 //   -Wno-deprecated -Wno-author \
