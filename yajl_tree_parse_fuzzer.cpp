@@ -82,21 +82,21 @@ git clean -fdx
 //    static library's symbols may not resolve.
 
 // MSAN
-afl-clang-fast++ -DDEBUG -g -glldb \
-   -fsanitize=memory,fuzzer \
-   -fsanitize-recover=memory \
-   -fsanitize-memory-track-origins=2 \
-   -fsanitize-memory-use-after-dtor \
-   -fno-optimize-sibling-calls \
-   -fno-omit-frame-pointer \
-   -fno-optimize-sibling-calls \
-   -fasynchronous-unwind-tables \
-   -funwind-tables \
-   -fno-common \
-   -I ./yajl/build/yajl-2.1.1/include \
-   yajl_tree_parse_fuzzer.cpp \
-  -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
-  -o fuzzer
+// afl-clang-fast++ -DDEBUG -g -glldb \
+//    -fsanitize=memory,fuzzer \
+//    -fsanitize-recover=memory \
+//    -fsanitize-memory-track-origins=2 \
+//    -fsanitize-memory-use-after-dtor \
+//    -fno-optimize-sibling-calls \
+//    -fno-omit-frame-pointer \
+//    -fno-optimize-sibling-calls \
+//    -fasynchronous-unwind-tables \
+//    -funwind-tables \
+//    -fno-common \
+//    -I ./yajl/build/yajl-2.1.1/include \
+//    yajl_tree_parse_fuzzer.cpp \
+//   -L ./yajl/build/yajl-2.1.1/lib -lyajl_s \
+//   -o fuzzer
 
 // ASAN
 // afl-clang-fast++ \
