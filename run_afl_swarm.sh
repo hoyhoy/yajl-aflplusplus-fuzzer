@@ -37,6 +37,8 @@ for i in $(seq 1 ${N}); do
   chance 70 && args+=(-x json_surrogates.dict)
   chance 85 && args+=(-x unicode.dict)
 
+  chance 25 && args+=(-Q)
+
   chance 40 && envs+=(AFL_EXPAND_HAVOC_NOW=1)
   chance 20 && args+=(-Z)                             # old queue processing
 
@@ -51,7 +53,12 @@ for i in $(seq 1 ${N}); do
 
     args+=(-c ./fuzzer_cmplog -l "$l")
   fi
+<<<<<<< HEAD
   
   echo   env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" ">/dev/null 2>&1"
   env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" >/dev/null 2>&1 &
+=======
+
+  env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" - >/dev/null 2>&1 &
+>>>>>>> adbe52b9 (script fixes)
 done
