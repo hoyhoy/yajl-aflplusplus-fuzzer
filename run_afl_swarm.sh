@@ -21,7 +21,7 @@ for i in $(seq 1 ${N}); do
   envs+=(AFL_PIZZA_MODE=-1)
   envs+=(AFL_FAST_CALL=1)
 
-  args=(-S "s$i" -t 1000+ -o ${OUT_DIR} -i pool-min-5)
+  args=(-S "s$i" -t 1000+ -o ${OUT_DIR} -i in-json-min)
   
   if chance 30; then                                  # CMPLOG
     envs+=(AFL_CMPLOG_ONLY_NEW=1)
@@ -36,29 +36,29 @@ for i in $(seq 1 ${N}); do
     args+=(-c ./build/bin/ytp.asan.cmplog)
   fi
 
-  if chance 33; then
+  if chance 50; then
     envs+=(AFL_USE_LSAN=1)
     envs+=(AFL_USE_ASAN=1)
 
     bin=./build/bin/ytp.asan
-  elif chance 33; then
+  else
     envs+=(AFL_USE_LSAN=1)
     envs+=(AFL_USE_ASAN=1)
 
     bin=./build/bin/ytp.asan.laf  # LAF_ALL build
-  else
-    envs+=(AFL_USE_CFISAN=1)
-
-    bin=./build/bin/ytp.cfisan
+  # else
+  #   envs+=(AFL_USE_CFISAN=1)
+  #
+  #   bin=./build/bin/ytp.cfisan
   fi
 
   chance 65 && envs+=(AFL_DISABLE_TRIM=1)
   chance 50 && envs+=(AFL_KEEP_TIMEOUTS=1)
 
-  chance 80 && args+=(-x llvm.dict)              # DICT2FILE dictionary
-  chance 75 && args+=(-x json.dict)
-  chance 70 && args+=(-x json_surrogates.dict)
-  chance 85 && args+=(-x unicode.dict)
+  chance 80 && args+=(-x dictionaries/llvm.dict)              # DICT2FILE dictionary
+  chance 75 && args+=(-x dictionaries/json.dict)
+  chance 70 && args+=(-x dictionaries/json_surrogates.dict)
+  chance 85 && args+=(-x dictionaries/unicode.dict)
 
   # chance 25 && args+=(-Q)
 
