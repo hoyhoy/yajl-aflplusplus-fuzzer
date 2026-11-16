@@ -47,3 +47,7 @@ target_compile_options(${YTP_NAME} PRIVATE ${fuzz_compile})
 target_link_options(${YTP_NAME} PRIVATE ${fuzz_link})
 
 install(TARGETS ${YTP_NAME} RUNTIME DESTINATION bin)
+
+add_executable(tc.${YTP_NAME} reproductions/test_crash.cpp)
+target_link_libraries(tc.${YTP_NAME} PRIVATE YAJL::yajl_s)
+
