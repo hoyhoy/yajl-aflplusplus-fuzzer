@@ -1,0 +1,51 @@
+# High surrogates (0xD800-0xDBFF)
+"\\uD800"
+"\\uD8FF"
+"\\uD900"
+"\\uD9FF"
+"\\uDA00"
+"\\uDAFF"
+"\\uDB00"
+"\\uDBFF"
+
+# Low surrogates (0xDC00-0xDFFF)
+"\\uDC00"
+"\\uDCFF"
+"\\uDD00"
+"\\uDDFF"
+"\\uDE00"
+"\\uDEFF"
+"\\uDF00"
+"\\uDFFF"
+
+# Invalid combinations - high followed by high
+"\\uD800\\uD800"
+"\\uD800\\uDBFF"
+"\\uDBFF\\uD800"
+
+# Invalid - high followed by non-surrogate
+"\\uD800A"
+"\\uD800\\u0041"
+"\\uD8000"
+"\\uD800\\n"
+"\\uD800 "
+
+# Invalid - low without high
+"\\uDC00"
+"\\uDFFF"
+
+# Valid pairs (for comparison)
+"\\uD800\\uDC00"
+"\\uDBFF\\uDFFF"
+
+# At boundaries
+"AAAA\\uD800"
+"BBBB\\uDBFF"
+
+# Multiple unpaired
+"\\uD800\\uD800\\uD800"
+"\\uDBFF\\uDBFF\\uDBFF"
+
+# Mixed valid/invalid
+"\\uD800\\uDC00\\uD800"
+"\\uD800\\uDC00\\uDBFF"

@@ -5,3 +5,5 @@ fuzzer*
 *.dSYM/*
 .bob
 asan_log
+build*
+.DS_Store

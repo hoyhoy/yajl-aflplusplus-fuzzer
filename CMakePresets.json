@@ -1,0 +1,81 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "asan-base", "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/build",
+        "ENABLE_ASAN": "ON",
+        "CMAKE_C_COMPILER": "/opt/bin/afl-clang-fast",
+        "CMAKE_CXX_COMPILER": "/opt/bin/afl-clang-fast++",
+        "YAJL_DIR": { "type": "PATH", "value": "${sourceDir}/yajl/build.asan/lib/cmake/YAJL" }
+      },
+      "environment": {
+        "AFL_USE_ASAN": "ON",
+        "AFL_USE_UBSAN": "ON",
+        "AFL_LLVM_DICT2FILE": "${sourceDir}/llvm.dict"
+      }
+    },
+    { "name": "ytp.asan", "inherits": "asan-base",
+      "cacheVariables": { "YTP_NAME": "ytp.asan" } },
+    { "name": "ytp.asan.laf", "inherits": "asan-base",
+      "cacheVariables": { "YTP_NAME": "ytp.asan.laf" },
+      "environment": { "AFL_LLVM_LAF_ALL": "ON", "AFL_LLVM_DICT2FILE": null }
+    },
+    { "name": "ytp.asan.cmplog", "inherits": "asan-base",
+      "cacheVariables": { "YTP_NAME": "ytp.asan.cmplog" },
+      "environment": { "AFL_LLVM_CMPLOG": "ON" }
+    },
+    {
+      "name": "ytp.cfisan",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/build",
+        "ENABLE_CFISAN": "ON",
+        "YTP_NAME": "ytp.cfisan",
+        "CMAKE_C_COMPILER": "/opt/llvm-latest/bin/clang",
+        "CMAKE_CXX_COMPILER": "/opt/llvm-latest/bin/clang++",
+        "YAJL_DIR": { "type": "PATH", "value": "${sourceDir}/yajl/build.cfisan/lib/cmake/YAJL" }
+      },
+      "environment": {
+        "AFL_USE_CFISAN": "ON",
+        "AFL_LLVM_DICT2FILE": "${sourceDir}/llvm.dict"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "asan-base", "hidden": true },
+    { "name": "ytp.asan", "inherits": "asan-base", "configurePreset": "ytp.asan" },
+    { "name": "ytp.asan.laf", "inherits": "asan-base", "configurePreset": "ytp.asan.laf"  },
+    { "name": "ytp.asan.cmplog", "inherits": "asan-base", "configurePreset": "ytp.asan.cmplog" },
+    { "name": "ytp.cfisan", "configurePreset": "ytp.cfisan" }
+  ],
+  "workflowPresets": [
+    { "name": "ytp.asan",
+      "steps": [
+        { "type": "configure", "name": "ytp.asan" },
+        { "type": "build", "name": "ytp.asan" }
+      ]
+    },
+    { "name": "ytp.asan.laf",
+      "steps": [
+        { "type": "configure", "name": "ytp.asan.laf" },
+        { "type": "build", "name": "ytp.asan.laf" }
+      ]
+    },
+    { "name": "ytp.asan.cmplog", 
+      "steps": [
+        { "type": "configure", "name": "ytp.asan.cmplog" },
+        { "type": "build", "name": "ytp.asan.cmplog" }
+      ]
+    },
+    { "name": "ytp.cfisan",
+      "steps": [
+        { "type": "configure", "name": "ytp.cfisan" },
+        { "type": "build", "name": "ytp.cfisan" }
+      ]
+    }
+  ]
+}
