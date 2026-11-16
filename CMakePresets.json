@@ -8,23 +8,26 @@
       "cacheVariables": {
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/build",
         "ENABLE_ASAN": "ON",
-        "CMAKE_C_COMPILER": "/opt/bin/afl-clang-fast",
-        "CMAKE_CXX_COMPILER": "/opt/bin/afl-clang-fast++",
-        "YAJL_DIR": { "type": "PATH", "value": "${sourceDir}/yajl/build.asan/lib/cmake/YAJL" }
+        "CMAKE_C_COMPILER": "afl-clang-fast",
+        "CMAKE_CXX_COMPILER": "afl-clang-fast++",
+        "YAJL_DIR": { "type": "PATH", "value": "/Users/jperrie/yajl-hoyhoy/build.asan/lib/cmake/YAJL" }
       },
       "environment": {
         "AFL_USE_ASAN": "ON",
         "AFL_USE_UBSAN": "ON",
-        "AFL_LLVM_DICT2FILE": "${sourceDir}/llvm.dict"
+        "AFL_LLVM_DICT2FILE": "${sourceDir}/build/${presetName}/llvm.dict"
       }
     },
-    { "name": "ytp.asan", "inherits": "asan-base",
+    { 
+      "name": "ytp.asan", "inherits": "asan-base",
       "cacheVariables": { "YTP_NAME": "ytp.asan" } },
-    { "name": "ytp.asan.laf", "inherits": "asan-base",
+    { 
+      "name": "ytp.asan.laf", "inherits": "asan-base",
       "cacheVariables": { "YTP_NAME": "ytp.asan.laf" },
       "environment": { "AFL_LLVM_LAF_ALL": "ON", "AFL_LLVM_DICT2FILE": null }
     },
-    { "name": "ytp.asan.cmplog", "inherits": "asan-base",
+    { 
+      "name": "ytp.asan.cmplog", "inherits": "asan-base",
       "cacheVariables": { "YTP_NAME": "ytp.asan.cmplog" },
       "environment": { "AFL_LLVM_CMPLOG": "ON" }
     },
@@ -37,11 +40,11 @@
         "YTP_NAME": "ytp.cfisan",
         "CMAKE_C_COMPILER": "/opt/llvm-latest/bin/clang",
         "CMAKE_CXX_COMPILER": "/opt/llvm-latest/bin/clang++",
-        "YAJL_DIR": { "type": "PATH", "value": "${sourceDir}/yajl/build.cfisan/lib/cmake/YAJL" }
+        "YAJL_DIR": { "type": "PATH", "value": "/Users/jperrie/yajl-hoyhoy/build.asan/lib/cmake/YAJL" }
       },
       "environment": {
         "AFL_USE_CFISAN": "ON",
-        "AFL_LLVM_DICT2FILE": "${sourceDir}/llvm.dict"
+        "AFL_LLVM_DICT2FILE": "${sourceDir}/build/${presetName}/llvm.dict"
       }
     }
   ],
