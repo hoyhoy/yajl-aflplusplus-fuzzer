@@ -65,6 +65,6 @@ for i in $(seq 1 ${N}); do
   chance 40 && envs+=(AFL_EXPAND_HAVOC_NOW=1)
   chance 20 && args+=(-Z)                             # old queue processing
 
-  # echo env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" ">/dev/null 2>&1 &"
+  echo env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" ">/dev/null 2>&1 &"
   env "${envs[@]}" afl-fuzz "${args[@]}" -- "${bin}" >/dev/null 2>&1 &
 done

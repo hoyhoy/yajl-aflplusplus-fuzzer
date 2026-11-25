@@ -14,13 +14,14 @@
       },
       "environment": {
         "AFL_USE_ASAN": "ON",
-        "AFL_USE_UBSAN": "ON",
-        "AFL_LLVM_DICT2FILE": "${sourceDir}/build/${presetName}/llvm.dict"
+        "AFL_USE_UBSAN": "ON"
       }
     },
     { 
-      "name": "ytp.asan", "inherits": "asan-base",
-      "cacheVariables": { "YTP_NAME": "ytp.asan" } },
+      "name": "ytp.asan",
+	  "inherits": "asan-base",
+      "cacheVariables": { "YTP_NAME": "ytp.asan" }
+    },
     { 
       "name": "ytp.asan.laf", "inherits": "asan-base",
       "cacheVariables": { "YTP_NAME": "ytp.asan.laf" },
@@ -50,7 +51,7 @@
   ],
   "buildPresets": [
     { "name": "asan-base", "hidden": true },
-    { "name": "ytp.asan", "inherits": "asan-base", "configurePreset": "ytp.asan" },
+    { "name": "ytp.asan", "inherits": "asan-base", "configurePreset": "ytp.asan" , "environment": { "AFL_LLVM_DICT2FILE": "${sourceDir}/build/${presetName}/llvm.dict" } },
     { "name": "ytp.asan.laf", "inherits": "asan-base", "configurePreset": "ytp.asan.laf"  },
     { "name": "ytp.asan.cmplog", "inherits": "asan-base", "configurePreset": "ytp.asan.cmplog" },
     { "name": "ytp.cfisan", "configurePreset": "ytp.cfisan" }
